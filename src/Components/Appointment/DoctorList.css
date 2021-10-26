@@ -1,0 +1,43 @@
+.container-items{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-auto-flow: column;
+  list-style: none;
+  border: 1px solid black;
+  width: 96%;
+  min-width: 340px;
+  max-width: 96vw;
+  margin-top: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+
+}
+.check{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.check>input{
+  width: 8rem;
+}
+.doc-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.extra{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .extra{
+    display: none;
+  }
+}
