@@ -1,9 +1,0 @@
-{
-  "logIn": true,
-  "role" : "DOCTOR",
-  "token": "123456789",
-  "name": "Anderson",
-  "lastName": "Armeya",
-  "ci": "28493778",
-  "email": "anderson.armeya@gmail.com"
-}
