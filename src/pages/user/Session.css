@@ -1,0 +1,35 @@
+.content-session{
+  background-color: whitesmoke;
+  margin-top: 4rem;
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-session{
+  padding: 3rem;
+  max-width: 92vw;
+  width: 50rem;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-right: 10px solid #2980b9;
+  border-radius: 10px;
+}
+.form-sig{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.double{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

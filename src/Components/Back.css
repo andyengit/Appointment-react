@@ -1,0 +1,12 @@
+.button-back{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 5rem;
+  left: 2rem;
+  border: none;
+  background-color: transparent;
+}
+.button-back>p{
+  padding-left: 1rem;
+}

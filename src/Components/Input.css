@@ -1,0 +1,14 @@
+input{
+  transition: 125ms;
+  margin: 6px;
+  border: none;
+  border-bottom: 2px solid #2980b970;
+  font-size: 1rem;
+  max-width: 80vw;
+  width: 100%;
+  background-color: transparent;
+  font-size: 1.3rem;
+}
+input:hover{
+  border-bottom: 2px solid #2980b9;
+}

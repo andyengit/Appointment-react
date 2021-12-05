@@ -1,0 +1,22 @@
+.footer{
+  width: 100vw;
+  height: 10rem;
+  background-color: #2980b9;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.parte{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}

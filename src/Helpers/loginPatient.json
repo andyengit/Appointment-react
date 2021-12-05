@@ -1,0 +1,9 @@
+{
+  "logIn": true,
+  "role" : "PATIENT",
+  "token": "123456789",
+  "firstname": "Anderson",
+  "lastName": "Armeya",
+  "ci": "28493778",
+  "email": "anderson.armeya@gmail.com"
+}
