@@ -1,14 +1,15 @@
 import "./windows.css";
+import Button from "./Button";
 
 const Windows = ({close, check}) => {
   return (
     <div className="background">
       <div className="windowAlert">
-        <h2>Reshedule</h2>
+        <h2>Reprogramar</h2>
         <input type="date" />
         <input type="time" />
-        <button onClick={() => {check();close()}}>Reshedule</button>
-        <button onClick={close}>Cerrar</button>
+        <Button onClick={() => {check();close()}} title="Aceptar" />
+        <Button onClick={close} title="Cerrar" />
       </div>
     </div>
   )

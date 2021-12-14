@@ -1,14 +1,15 @@
 import Back from "../../Components/Back"
-import ButtonLink from "../../Components/ButtonLink"
+import Panel from "../../Components/Panel"
 
 const Edit = () => {
   return (
     <div className="content">
       <Back/>
       <div className="container">
-        <ButtonLink to="/edit/doc" title="Doctores"/>
-        <div className="list">
-
+        <div className="panels">
+          <Panel to="/edit/doc" content="Doctores"/>
+          <Panel to="/edit/doc" content="Citas"/>
+          <Panel to="/edit/doc" content="Especialidades"/>
         </div>
       </div>
     </div>

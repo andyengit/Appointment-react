@@ -1,0 +1,11 @@
+.Panel{
+  max-width: 80vw;
+  background-color: #3498DB;
+  width: 20rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  border-radius: 10px;
+}

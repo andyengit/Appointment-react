@@ -1,3 +1,5 @@
+import Panel from "../../Components/Panel"
+
 const AdminDashboard = () => {
 
 
@@ -5,7 +7,11 @@ const AdminDashboard = () => {
   return (
     <div className="content">
       <div className="container">
-        DASHBOARD ADMIN
+      <div className="panels">
+          <Panel to="/new" content="Crear"/>
+          <Panel to="/edit" content="Administrar Doctores" />
+          <Panel to="/reports" content="Reportes" />
+        </div>
       </div>
     </div>
   )

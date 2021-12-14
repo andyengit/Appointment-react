@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import AppointmentDocList from "../../Components/Appointment/AppointmentDocList";
+import Button from "../../Components/Button";
+import Input from "../../Components/Input";
 import list from "../../Helpers/appointmentDocList.json";
 
 
@@ -22,9 +24,9 @@ const AppointmentDoc = () => {
     <div className="content">
       <div className="container">
         <div className="slideOption">
-          <button onClick={() => setDate("2021-10-14")}>Hoy</button>
-          <button onClick={() => setDate("2021-10-15")}>Mañana</button>
-          <input onChange={(e) => setDate(e.target.value)} type="date" />
+          <Button onClick={() => setDate("2021-10-14")} title="Hoy"/>
+          <Button onClick={() => setDate("2021-10-15")} title="Mañana"/>
+          <Input  onChange={(e) => setDate(e.target.value)} type="date" />
         </div>
         <div>
           {

@@ -1,13 +1,21 @@
+import Back from "../../Components/Back"
+import Button from "../../Components/Button"
+
 const Reports = () => {
   return (
     <div className="content">
+      <Back/>
       <div className="container">
         <h2>Generar reportes</h2>
-        <button>Generar reporte de usuarios registrados</button>
-        <button>Generar reporte de doctores registrados</button>
-        <button>Generar reporte de Citas concretadas</button>
-        <button>Generar reporte de Especialidades</button>
-        <button>Generar reporte de Doctores en especialidad de: XXXXXX</button>
+        <select>
+          <option>Citas</option>
+          <option>Doctores</option>
+        </select>
+        <div>
+        <Button title="Descargar"/>
+        <Button title="Ver"/>
+        </div>
+        
       </div>
     </div>
   )

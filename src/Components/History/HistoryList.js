@@ -1,6 +1,7 @@
 import axios from "axios"
 import api from "../../Helpers/api.json";
 import { useState, useEffect } from "react";
+import Button from "../Button";
 
 const HistoryList = (props) => {
 
@@ -16,7 +17,8 @@ const HistoryList = (props) => {
     <tr>
       <td>{!!doc && doc.firstname}</td>
       <td>{props.date} {props.time}</td>
-      <td><button>x</button><button>E</button></td>
+      <td>Especialidad</td>
+      <td><Button title="Administrar"/></td>
     </tr>
   )
 }

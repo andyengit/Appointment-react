@@ -1,11 +1,17 @@
 .Checked{
-  background-color: green;
+  background-color: #ABEBC6 ;
 }
 
 .out{
-  background-color: red;
+  background-color: #E6B0AA;
+  border-bottom: 1px solid #D98880;
 }
 
 .reshedule{
-  background-color: orange;
+  background-color: #FAD7A0 ;
+}
+
+.static{
+display: flex;
+justify-content: flex-start;
 }

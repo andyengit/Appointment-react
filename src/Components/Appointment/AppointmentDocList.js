@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./AppointmentDocList.css";
 import Windows from "../../Components/Windows";
+import Button from "../Button";
 
 const AppointmentDocList = (props) => {
  
@@ -17,7 +18,7 @@ const AppointmentDocList = (props) => {
 
   
 
-  return (<li className={`${states} li`}>
+  return (<li className={`${states} li static`}>
     <div>
       {props.name}
     </div>
@@ -25,9 +26,9 @@ const AppointmentDocList = (props) => {
       {props.position}
     </div>
     <div>
-      {(states === "waiting" || states === "checked") && <button onClick={() => setStates("Checked")}>Confrimar</button>}
-      {(states === "waiting" || states === "checked") && <button onClick={() => setStates("out")}>Cancelar</button>}
-      {(states === "waiting" || states === "out") && <button onClick={() => {handleWindow()}}>Reprogramar</button>}
+      {(states === "waiting" || states === "checked") && <Button color="#27AE60" onClick={() => setStates("Checked")} title="Confirmar"/>}
+      {(states === "waiting" || states === "checked") && <Button color="#C0392B" onClick={() => setStates("out")} title="Cancelar"/>}
+      {(states === "waiting" || states === "out") && <Button onClick={() => {handleWindow()}} title="Reprogramar" />}
     </div>
     {window && <Windows check={reshedule} close={handleWindow}/>}
   </li>)

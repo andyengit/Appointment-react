@@ -5,6 +5,7 @@ import Alert from "../../Components/Alert";
 import axios from "axios";
 import api from "../../Helpers/api.json";
 import Input from "../../Components/Input";
+import Button from "../../Components/Button";
 
 const LogIn = () => {
   const auth = useAuth();
@@ -42,9 +43,9 @@ const LogIn = () => {
         <div className="form">
           <Input onChange={(e) => setdata({...data, email : e.target.value})} type="email" autocomplete="on" placeholder="Correo" />
           <Input onEnter={handleLogin} onChange={(e) => setdata({...data, password : e.target.value})} type="password" placeholder="Contraseña" />
-          <button onClick={handleLogin}>Enviar</button>
-          <button onClick={() => auth.login("D")}>Doctor</button>
-          <button onClick={() => auth.login("A")}>ADMIN</button>
+          <Button onClick={handleLogin} title="Enviar"/>
+          <Button onClick={() => auth.login("D")} title="Doctor"/>
+          <Button onClick={() => auth.login("A")} title="Admin"/>
         </div>
       </div>
     </div> 

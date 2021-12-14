@@ -7,6 +7,7 @@ import Alert from "../../Components/Alert"
 import { useHistory } from "react-router-dom"
 import useAuth from "../../Auth/useAuth"
 import Loader from "../../Components/Loader"
+import Button from "../../Components/Button"
 
 
 
@@ -90,7 +91,7 @@ const SignIn = () => {
                 <option value=''>Selecciona la ciudad</option>
                {city.map((el,key) => <option key={key} value={el.city_id}>{el.city_name}</option>)}
             </select>}
-          <button onClick={register}>Enviar</button>
+          <Button onClick={register} title="Enviar"/>
         </div>
       </div>
     </div>

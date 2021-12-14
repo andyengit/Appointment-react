@@ -22,6 +22,7 @@ const History = () => {
           <tr>
             <th>Doctor</th>
             <th>Fecha</th>
+            <th>Especialidad</th>
             <th>Editar</th>
           </tr>
         </thead>

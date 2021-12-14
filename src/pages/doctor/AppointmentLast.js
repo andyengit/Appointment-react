@@ -1,6 +1,7 @@
 import history from "../../Helpers/appoinementLast.json";
 import { useState, useEffect } from "react";
 import AppointmentDocLastList from "../../Components/Appointment/AppointmentDocLastList";
+import Button from "../../Components/Button";
 
 const AppointmentLast = () => {
   const [Date, setDate] = useState("");
@@ -25,7 +26,7 @@ const AppointmentLast = () => {
         <h2>History</h2>
         <div>
           <input onChange={(e) => setDate(e.target.value)} type="date" />
-          <button onClick={()=> setDate("")}>Reset</button>
+          <Button onClick={()=> setDate("")} title="Reset"/>
         </div>
         <div>
           {(List !== null || List.length !== 0 ) ?
