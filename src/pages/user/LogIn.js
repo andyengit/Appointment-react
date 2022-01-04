@@ -1,12 +1,12 @@
 import { useHistory } from "react-router";
 import useAuth from "../../Auth/useAuth";
 import { useState } from "react";
-import Alert from "../../Components/Alert";
 import axios from "axios";
 import api from "../../Helpers/api.json";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import Back from "../../Components/Back";
+import Message from "../../Components/Message";
 
 const LogIn = () => {
   const auth = useAuth();
@@ -15,6 +15,8 @@ const LogIn = () => {
   const [error, seterror] = useState(false);
   
   const handleLogin = () => {
+
+    seterror({message: undefined, status: false})
 
     axios.post(api.url+"/user/login",data)
     .then(res => {
@@ -33,15 +35,18 @@ const LogIn = () => {
         history.push("/dashboard")
       }
     })
-    .catch(seterror(true)) 
+    .catch(er => seterror({message: er.response.data.error+" : "+er.response.statusText, status: true})) 
   }
+
+  
+  console.log(error.message)
 
   return (
     <div className="content-session">
       <Back/>
-      {error && <Alert title="Error" message="Datos erroneos" close={seterror}/>}
       <div className="container-session">
-        <h3>Create una cuenta</h3>
+        <h3>Iniciar sesion</h3>\
+        {error.message !== undefined && <Message type={"m-error"} content={error.message.toString()}/>}
         <div className="form">
           <Input onChange={(e) => setdata({...data, email : e.target.value})} type="email" autocomplete="on" placeholder="Correo" />
           <Input onEnter={handleLogin} onChange={(e) => setdata({...data, password : e.target.value})} type="password" placeholder="Contraseña" />

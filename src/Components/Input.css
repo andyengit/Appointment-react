@@ -1,7 +1,8 @@
-input{
+.input{
   transition: 125ms;
   margin: 6px;
   border: none;
+  border-radius: 0;
   border-bottom: 2px solid #2980b970;
   font-size: 1rem;
   max-width: 80vw;
@@ -9,6 +10,15 @@ input{
   background-color: transparent;
   font-size: 1.3rem;
 }
-input:hover{
+
+.input:hover{
   border-bottom: 2px solid #2980b9;
+}
+
+.input:focus{
+  outline: none;
+}
+
+.input:active{
+  outline: none;
 }

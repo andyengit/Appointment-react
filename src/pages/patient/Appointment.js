@@ -24,7 +24,7 @@ const Appointment = () => {
       <div className="mini-header">
         <Autocomplete type="search" initial={speciality} />
         <div className="container-list">
-          {DocLi ? DocLi.map(d =><DoctorList key={d.id} ci={d.doctor_ci} /> ) : speciality === undefined ? <h2>¿Que especilaidad desea buscar?</h2> : <h2>No se encuentran doctores disponibles</h2> }
+          {DocLi ? DocLi.map(d =><DoctorList speciality={speciality} key={d.id} ci={d.doctor_ci} /> ) : speciality === undefined ? <h2>¿Que especilaidad desea buscar?</h2> : <h2>No se encuentran doctores disponibles</h2> }
         </div>
       </div>
     </div>

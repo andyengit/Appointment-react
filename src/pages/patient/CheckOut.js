@@ -21,12 +21,13 @@ const CheckOut = () => {
 
   const CreateAppointment = () => {
 
-    state.dataCheckout.hour = state.dataCheckout.hour+":00";
+    state.dataCheckout.hour = state.dataCheckout.hour+"00:00:00";
     !!state && axios.post(api.url+'/appointment',{...state.dataCheckout,patient_ci: user.ci,status: "active" })
       .then(res => res.statusText === "Created" && setcheck(true))
       .catch(seterror(true))
   }
 
+  console.log(state)
 
   return (
     <div className="content">
@@ -47,7 +48,8 @@ const CheckOut = () => {
           <h3>Haga click en el circulo para cofirmar</h3>
           <BsCircle size="4rem" onClick={CreateAppointment} />
           <p>Doctor: {!!doc && doc.firstname+" "+doc.lastname}</p>
-          <p>Fecha: {!!state && state.dataCheckout.day+" Hora:"+state.dataCheckout.hour}</p> 
+          <p>Especialidad:{!!state && state.dataCheckout.speciality }</p>
+          <p>Fecha: {!!state && state.dataCheckout.day}</p> 
           <p>Precio: <b>${!!doc && doc.cost}</b></p>
         </div>
       }

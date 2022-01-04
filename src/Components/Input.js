@@ -10,6 +10,7 @@ const Input = ({name,id,aC, onChange,type,placeholder, onEnter,max,min, disabled
 
   return (
       <input 
+      className="input"
       onKeyUp={Submit}  
       max={max} 
       min={min} 

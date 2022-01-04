@@ -63,6 +63,7 @@
   border: 1px solid #7b7d7d ;
   border-bottom: none ;
   padding-left: 5px;
+  cursor: pointer;
 }
 .activeOp{
   background-color: #d6eaf8;
@@ -98,6 +99,7 @@
   width: 4.5rem;
   height: 4.5rem;
   background: orange;
+  cursor:pointer;
 }
 .mid{ 
   margin-top: 2rem;

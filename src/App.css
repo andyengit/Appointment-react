@@ -36,17 +36,6 @@
   justify-content: center;
 }
 
-.input{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.input>label{
-  font-weight: bold;
-}
-
 select{
   border: none;
   height: 1.8rem;
@@ -61,14 +50,6 @@ select{
   min-width: 3rem;
   height: 1.8rem;
   margin: 10px;
-}
-
-.input{
-  border: none;
-  height: 1.8rem;
-  border-radius: 6px;
-  width: 12rem;
-  margin: 5px;
 }
 
 .li{
@@ -100,4 +81,11 @@ td,th{
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+input{
+  border: none;
+  height: 1.8rem;
+  border-radius: 6px;
+  width: 12rem;
+  margin: 5px;
 }
