@@ -5,6 +5,7 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import api from "../../Helpers/api.json"
 import Input from "../Input";
+import {BsPersonCircle} from "react-icons/bs"
 
 const DoctorList = ({ci}) => {
 
@@ -36,7 +37,7 @@ const DoctorList = ({ci}) => {
 
     if(isLogged()){
       if (!!dataCheckout.day && !!dataCheckout.hour && (inputs.hour >= Doc.starts_at && inputs.hour <= Doc.ends_at)) {
-        return {pathname: "/appointment/checkout", state: {dataCheckout}};
+        return {pathname: "/checkout", state: {dataCheckout}};
       }else{
         return "#";
       }
@@ -45,10 +46,11 @@ const DoctorList = ({ci}) => {
       return "/login"
     }
   }
+
   return ( Doc && 
     <li className="container-items">
       <div className="doc-info">
-        <box-icon name='user' size="lg"></box-icon>
+        <BsPersonCircle size="3rem"/> 
         <span>{Doc.firstname+' '+Doc.lastname}</span>
         <p>{Doc.speciality}</p>
       </div>
@@ -59,7 +61,7 @@ const DoctorList = ({ci}) => {
       </div>
       <div className="check">
         <Input type="date" min={getDate()} onChange={(e) => setinputs({...inputs, day: e.target.value})}/>
-        <Input type="time" min={!!Doc && Doc.starts_at.substring(0,5)} max={!!Doc && Doc.ends_at.substring(0,5)} onChange={(e) => setinputs({...inputs, hour: e.target.value})}/>
+        <Input type="time" value={!!Doc && Doc.starts_at.substring(0,5)+":00"} min={!!Doc && Doc.starts_at.substring(0,5)} max={!!Doc && Doc.ends_at.substring(0,5)} onChange={(e) => setinputs({...inputs, hour: e.target.value})}/>
         <ButtonLink to={toCheckout} title="RESERVAR" />
         <ButtonLink color="orange" to={`/profile/${ci}`} title="VER PERFIL" />
       </div>

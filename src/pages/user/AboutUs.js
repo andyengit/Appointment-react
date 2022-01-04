@@ -1,9 +1,11 @@
 import ButtonLink from "../../Components/ButtonLink";
 import "./AboutUs.css";
+import Back from "../../Components/Back";
 
 function AboutUs() {
   return (
     <div className="content">
+      <Back/>
       <div className="container">
         <div className="dev-profile">
           <h2>Photo</h2>

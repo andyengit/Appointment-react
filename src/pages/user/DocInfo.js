@@ -1,9 +1,12 @@
 import "./DocInfo.css"
 import Input from "../../Components/Input"
+import Button from "../../Components/Button"
+import Back from "../../Components/Back"
 
 const DocInfo = () => {
   return (
     <div className="content">
+      <Back/>
       <div className="content">
       <div className="container-box">
         <h3>¿Eres Doctor?</h3>
@@ -14,8 +17,7 @@ const DocInfo = () => {
         <Input placeholder="Especialidad" />
         <Input placeholder="Año de promocion" />
         <textarea className="textarea" rows="3" placeholder="Acerca de ti" />
-        
-        <button>Enviar correo</button>
+        <Button title="Enviar Correo"/>
       </div>
     </div>
     </div>

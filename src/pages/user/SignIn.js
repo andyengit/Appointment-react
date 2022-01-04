@@ -8,8 +8,7 @@ import { useHistory } from "react-router-dom"
 import useAuth from "../../Auth/useAuth"
 import Loader from "../../Components/Loader"
 import Button from "../../Components/Button"
-
-
+import Back from "../../Components/Back"
 
 const SignIn = () => {
 
@@ -73,6 +72,7 @@ const SignIn = () => {
 
   return (
     <div className="content-session">
+      <Back/>
       {(loader || (!loader && error)) && <Alert title={error ? "ERROR" : "CARGANDO..."} message={error ? "Datos erroneos" : <Loader/>} close={seterror}/>}
       <div className="container-session">
         <h3>Create una cuenta</h3>

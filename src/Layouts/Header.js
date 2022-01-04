@@ -4,6 +4,8 @@ import useAuth from "../Auth/useAuth";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import SlidebarData from "./SlidebarData";
+import { BiMenu, BiChevronsLeft, BiLogOut} from 'react-icons/bi';
+import Logo from "../img/MEDTIME.svg";
 
 const Header = () => {
   const auth = useAuth();
@@ -25,12 +27,11 @@ const Header = () => {
     <header>
       <div className="navbar">
         <Link to="#" className="menu-btn">
-          <box-icon name='menu' color="#2980b9" size="lg" onClick={showSidebar} ></box-icon>
+          <BiMenu  size="2.5em" color="#2980b9" onClick={showSidebar}/>
         </Link>
         <Link to={auth.isLogged() ? "/dashboard" : "/"}>
           <div className="Logo">
-            <box-icon name='clinic' color="#2980b9" size="md"></box-icon>
-            <span>MEDTIME</span>
+            <img src={Logo}  className="logo-foto" alt="Medtime"/>
           </div>
         </Link>
       </div>
@@ -38,7 +39,7 @@ const Header = () => {
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
             <Link to="#" className="menu-bars">
-              <box-icon name='x' color="#2980b9" size="lg" onClick={showSidebar} />
+              <BiChevronsLeft  size="2.5em" color="#2980b9" onClick={showSidebar}/>
             </Link>
           </li>
           {SlidebarData().map((item, index) => {
@@ -58,43 +59,15 @@ const Header = () => {
               showSidebar()
             }}>
               <Link to="#" className="menu-bars">
-                <box-icon color="#2980b9" name='log-out'></box-icon>
+                <BiLogOut color="#2980b9" size="1.5em"/>
                 <span>LogOut</span>
               </Link>
             </li>)
           }
         </ul>
       </nav>
-
-
     </header>
   )
-
-
-
-
-
-
-  /* return (
-    <header className="header-main">
-      <Link to={auth.isLogged() ? "/dashboard" : "/"}>
-        <div className="logo">
-          <box-icon type='solid' name='registered' color="#2e86c1"></box-icon>
-          <h3>MedTime</h3>
-        </div>
-      </Link>
-      {
-        !auth.isLogged() ?
-          (<div className="access">
-            <ButtonLink to="/LogIn" title="LogIn" />
-            <ButtonLink to="/SignIn" title="SignIn" />
-          </div>)
-          : (<div className="access">
-            <button onClick={handleLogOut}>SALIR</button>
-          </div>)
-      }
-    </header>
-  ) */
 }
 
 export default Header

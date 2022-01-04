@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import Loader from "../../Components/Loader"
 import Alert from "../../Components/Alert"
 import TemplateEdit from "../../Components/Admin/TemplateEdit"
+import Button from "../../Components/Button"
 
 
 const AdmDoc = () => {
@@ -66,10 +67,10 @@ const AdmDoc = () => {
           <tbody>
             {list && list.map((el, i) => 
               <tr key={i}>
-                <td>{el.firstname}</td>
+                <td>{el.firstname} {el.lastname}</td>
                 <td>
-                  <button onClick={() => showEdit(el)}> Editar</button>
-                  <button onClick={() => deleteDoc(el)}>Borrar</button>
+                  <Button onClick={() => showEdit(el)} title="Editar"/>
+                  <Button onClick={() => deleteDoc(el)} color="#C0392B" title="Borrar"/>
                 </td>
              </tr>)}
             

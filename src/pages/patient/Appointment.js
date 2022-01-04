@@ -3,48 +3,29 @@ import DoctorList from "../../Components/Appointment/DoctorList";
 import api from "../../Helpers/api.json";
 import axios from "axios";
 import Back from "../../Components/Back";
+import Autocomplete from "../../Components/Home/Autocomplete";
+import { useParams } from "react-router-dom";
 
 const Appointment = () => {
 
 
-  const [specialities, setspecialities] = useState(null)
-  const [Speciality, setSpeciality] = useState("");
+  const { speciality } = useParams();
   const [DocLi, setDocLi] = useState(null)
 
   useEffect(() => {
-    axios.get(api.url+"/speciality")
-    .then(res => setspecialities(res.data))
-    .catch(e => console.log(e))
-  }, [])
-
-  useEffect(() => {
-
-    !!Speciality && axios.get(api.url+"/specialization/speciality/"+Speciality)
-    .then(res => setDocLi(res.data))
-    .catch(setDocLi(null));
-
-  }, [Speciality])
+    axios.get(api.url+'/specialization/speciality/'+speciality)
+    .then(res => res.data.length > 0 ? setDocLi(res.data) : setDocLi(null))
+    .catch(setDocLi(null))
+  }, [speciality])
 
   return (
-    <div className="content">
+    <div className="content-s">
       <Back/>
-      <div className="container">
-        <div className="input">
-          <label htmlFor="">Especialidad</label>
-          <select onChange={(e) => setSpeciality(e.target.value)}>\
-            <option>Seleccione:</option>
-            {!!specialities && specialities.map((e,i) => <option key={i} value={e.name}>{e.name}</option>)}
-          </select>
+      <div className="mini-header">
+        <Autocomplete type="search" initial={speciality} />
+        <div className="container-list">
+          {DocLi ? DocLi.map(d =><DoctorList key={d.id} ci={d.doctor_ci} /> ) : speciality === undefined ? <h2>¿Que especilaidad desea buscar?</h2> : <h2>No se encuentran doctores disponibles</h2> }
         </div>
-        <div>
-        {(!!Speciality && !!DocLi) &&
-            <ul className="ul">
-              {DocLi.map((doc, index) => <DoctorList key={index} ci={doc.doctor_ci}/>)} 
-            </ul>
-          }
-          {(!!Speciality && !DocLi) && <h2>No hay doctores disponibles</h2>}
-        </div>
-          
       </div>
     </div>
   )

@@ -4,8 +4,13 @@
   width: 20rem;
   height: 8rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 1rem;
   border-radius: 10px;
+}
+.Panel>h3{
+  margin: 7px;
+  font-weight: normal;
 }

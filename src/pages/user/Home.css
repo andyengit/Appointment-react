@@ -1,6 +1,6 @@
 .start{
   width: 100vw;
-  height: calc(100vh - 8rem) ;
+  height: calc(100vh) ;
   min-height: calc(100vh - 8rem);
   background-image: url("../../img/header.jpg");
   filter: opacity(100%);
@@ -118,6 +118,16 @@
 
 .img-hos{
   width: 150px;
+}
+
+.present{
+  width: 15rem;
+  max-width: 80vw;
+}
+
+.margin-arrow{
+  margin-top: calc(4vh);
+  z-index: 0;
 }
 
 

@@ -1,38 +1,37 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 import AppointmentDocList from "../../Components/Appointment/AppointmentDocList";
 import Button from "../../Components/Button";
 import Input from "../../Components/Input";
-import list from "../../Helpers/appointmentDocList.json";
+import api from "../../Helpers/api.json"
+import useAuth from "../../Auth/useAuth";
 
 
 const AppointmentDoc = () => {
-  const [Date, setDate] = useState("2021-10-14");
-  const [List, setList] = useState(list);
+
+  const [List, setList] = useState(null);
+  const { user } = useAuth();
  
-
   useEffect(() => {
-    const SearchByDate = (obj) => {
-      if(obj.date === Date)
-        return true;
-      return false;
-    }
+    axios.get(api.url+'/appointment/doctor/'+user.ci)
+    .then(res => setList(res.data))
+  }, [user])
 
-    setList(list.filter(SearchByDate));
-  }, [Date])
+  console.log(List)  
 
   return (
     <div className="content">
       <div className="container">
         <div className="slideOption">
-          <Button onClick={() => setDate("2021-10-14")} title="Hoy"/>
-          <Button onClick={() => setDate("2021-10-15")} title="Mañana"/>
-          <Input  onChange={(e) => setDate(e.target.value)} type="date" />
+          <Button title="Hoy"/>
+          <Button title="Mañana"/>
+          <Input type="date" />
         </div>
         <div>
           {
-            !(List.length === null || List.length === 0) ? (
+            !(List === null || List.length === 0) ? (
               <ul className="ul">
-                {List.map((a) => <AppointmentDocList key={a.id} state={a.state} name={a.name} date={a.date} position={a.position} />)}
+                {List && List.map((a) => <AppointmentDocList key={a.id} state={a.status} ci={a.patient_ci} date={a.hour} position={a.position} />)}
               </ul>)
               :
               <ul className="ul">

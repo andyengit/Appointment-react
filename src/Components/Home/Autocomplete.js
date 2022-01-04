@@ -4,11 +4,12 @@ import formatStr from "../Function/formatStr";
 import Option from "./Option"
 import axios from "axios";
 import api from "../../Helpers/api.json"
+import {BiSearchAlt} from "react-icons/bi"
 
+const Autocomplete = ({initial}) => {
 
-const Autocomplete = ({initial,setVar}) => {
+  
   const [specialities, setspecialities] = useState([])
-
   useEffect(() => {
     axios.get(api.url+'/speciality')
     .then(res => {
@@ -110,7 +111,7 @@ const Autocomplete = ({initial,setVar}) => {
           </div>}
       </div>
       <button onClick={handleSearch} className="search-btn">
-        <box-icon name='search' size="md" color="white"></box-icon>
+        <BiSearchAlt color="white" size="2rem"/>
       </button>
     </div>
   )

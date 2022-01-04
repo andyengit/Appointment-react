@@ -15,7 +15,7 @@ const Search = () => {
   useEffect(() => {
     axios.get(api.url+'/specialization/speciality/'+speciality)
     .then(res => res.data.length > 0 ? setlist(res.data) : setlist(null))
-    .catch(e => console.log(e))
+    .catch(setlist(null))
   }, [speciality])
 
   return (
@@ -24,17 +24,7 @@ const Search = () => {
       <div className="mini-header">
         <Autocomplete type="search" initial={speciality} />
         <div className="container-list">
-          {list && list.map(d =><DoctorList key={d.id} ci={d.doctor_ci} /> )}
-          
-        </div>
-      </div>
-      <div className="mini-footer">
-        <div className="pagination">
-          <button className="pages">1</button>
-          <button className="pages">2</button>
-          <button className="pages">3</button>
-          <button className="pages">4</button>
-          <button className="pages">...</button>
+          {list ? list.map(d =><DoctorList key={d.id} ci={d.doctor_ci} /> ) : speciality === undefined ? <h2>¿Que especilaidad desea buscar?</h2> : <h2>No se encuentran doctores disponibles</h2> }
         </div>
       </div>
     </div>

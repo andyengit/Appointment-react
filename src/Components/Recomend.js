@@ -1,33 +1,34 @@
+import {BsStarFill, BsStarHalf, BsStar} from "react-icons/bs"
 
 const Recomend = ({number}) => {
   const result = () => {
     if (number < 5) {
       return (
         <>
-          <box-icon type='solid' name='star'></box-icon>
-          <box-icon name='star' ></box-icon>
-          <box-icon name='star' ></box-icon>
-          <box-icon name='star' ></box-icon>
-          <box-icon name='star' ></box-icon>
+          <BsStarFill/>
+          <BsStar/>
+          <BsStar/>
+          <BsStar/>
+          <BsStar/>
         </>)
     } else if (number >= 5 && number < 8) {
       return (
         <>
-          <box-icon type='solid' name='star'></box-icon>
-          <box-icon type='solid' name='star'></box-icon>
-          <box-icon name='star' type='solid' ></box-icon>
-          <box-icon name='star' ></box-icon>
-          <box-icon name='star' ></box-icon>
+          <BsStarFill />
+          <BsStarFill />
+          <BsStarHalf />
+          <BsStar />
+          <BsStar />
         </>)
 
     } else if (number >= 8 && number <= 10) {
       return (
       <>
-        <box-icon type='solid' name='star'></box-icon>
-        <box-icon type='solid' name='star'></box-icon>
-        <box-icon type='solid' name='star'></box-icon>
-        <box-icon type='solid' name='star'></box-icon>
-        <box-icon type='solid' name='star'></box-icon>
+        <BsStarFill />
+        <BsStarFill />
+        <BsStarFill />
+        <BsStarFill />
+        <BsStarFill />
       </>)
 
     }

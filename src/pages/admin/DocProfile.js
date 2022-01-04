@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import api from "../../Helpers/api.json"
 import Back from "../../Components/Back"
+import {BsPersonCircle} from "react-icons/bs"
 
 const DocProfile = () => {
 
@@ -20,7 +21,7 @@ const DocProfile = () => {
       <Back/>
       {Doc && 
       <div className="id">
-        <box-icon name='user-circle' type='solid' size="lg"></box-icon>
+        <BsPersonCircle size="5rem"/>
         <h2>Profile of: {Doc.firstname} {Doc.lastname}</h2>
       </div>}
       

@@ -5,6 +5,7 @@ const Panel = ({content,to}) => {
   return (
     <Link to={to}>
       <div className="Panel">
+        
       {content}
       </div>
     </Link>

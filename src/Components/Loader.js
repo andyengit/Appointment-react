@@ -1,6 +1,8 @@
+import {BiLoaderAlt} from "react-icons/bi"
+
 const Loader = () => {
   return (
-      <box-icon name='loader-alt' animation='spin' size="lg"></box-icon>
+      <BiLoaderAlt />
   )
 }
 

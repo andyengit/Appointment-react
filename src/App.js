@@ -1,4 +1,3 @@
-import "boxicons"
 import './App.css';
 import AuthProvider from './Auth/AuthProvider';
 import AppRouter from './routers/AppRouter';

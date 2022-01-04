@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import useAuth from '../../Auth/useAuth';
 import Back from '../../Components/Back';
 import api from "../../Helpers/api.json";
+import {AiFillCheckCircle} from "react-icons/ai"
+import {BsCircle} from "react-icons/bs"
 
 const CheckOut = () => {
   const {user} = useAuth()
@@ -31,7 +33,7 @@ const CheckOut = () => {
       <Back/>
       {check ?
         <div className="container">
-          <box-icon name='check-circle' type='solid' size="lg" color="green"></box-icon>
+          <AiFillCheckCircle size="4rem" color='#2ECC71'/>
           <p>Id Cita: 879347928934892</p>
           <p>Direccion: Hospital Central</p>
           <p>Av Libertador</p> 
@@ -42,8 +44,8 @@ const CheckOut = () => {
         :
         <div className="container">
           {error && <h3>Error: No se ha podido crear la cita</h3>}
-          <h3>Haga click en el cuadrado para cofirmar</h3>
-          <box-icon onClick={CreateAppointment} name='checkbox' size="lg"></box-icon>
+          <h3>Haga click en el circulo para cofirmar</h3>
+          <BsCircle size="4rem" onClick={CreateAppointment} />
           <p>Doctor: {!!doc && doc.firstname+" "+doc.lastname}</p>
           <p>Fecha: {!!state && state.dataCheckout.day+" Hora:"+state.dataCheckout.hour}</p> 
           <p>Precio: <b>${!!doc && doc.cost}</b></p>

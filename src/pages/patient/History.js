@@ -11,7 +11,7 @@ const History = () => {
 
   useEffect(() => {
     axios.get(api.url+"/appointment/patient/"+user.ci)
-    .then(res => sethistories([res.data]))
+    .then(res => sethistories(res.data))
     .catch(e => console.log(e))
   }, [user])
 

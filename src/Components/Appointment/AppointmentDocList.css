@@ -1,8 +1,8 @@
-.Checked{
+.done{
   background-color: #ABEBC6 ;
 }
 
-.out{
+.cancelled{
   background-color: #E6B0AA;
   border-bottom: 1px solid #D98880;
 }

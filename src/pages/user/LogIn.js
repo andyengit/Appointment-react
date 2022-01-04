@@ -6,6 +6,7 @@ import axios from "axios";
 import api from "../../Helpers/api.json";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
+import Back from "../../Components/Back";
 
 const LogIn = () => {
   const auth = useAuth();
@@ -37,6 +38,7 @@ const LogIn = () => {
 
   return (
     <div className="content-session">
+      <Back/>
       {error && <Alert title="Error" message="Datos erroneos" close={seterror}/>}
       <div className="container-session">
         <h3>Create una cuenta</h3>
@@ -44,8 +46,8 @@ const LogIn = () => {
           <Input onChange={(e) => setdata({...data, email : e.target.value})} type="email" autocomplete="on" placeholder="Correo" />
           <Input onEnter={handleLogin} onChange={(e) => setdata({...data, password : e.target.value})} type="password" placeholder="Contraseña" />
           <Button onClick={handleLogin} title="Enviar"/>
-          <Button onClick={() => auth.login("D")} title="Doctor"/>
-          <Button onClick={() => auth.login("A")} title="Admin"/>
+          <Button onClick={() => {auth.login("D"); history.push("/dashboard")}} title="Doctor"/>
+          <Button onClick={() => {auth.login("A"); history.push("/dashboard")}} title="Admin"/>
         </div>
       </div>
     </div> 

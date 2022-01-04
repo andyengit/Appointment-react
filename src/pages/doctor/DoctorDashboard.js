@@ -1,5 +1,8 @@
 import useAuth from "../../Auth/useAuth"
 import Panel from "../../Components/Panel";
+import {FaNotesMedical} from "react-icons/fa"
+import {BsCalendarDate} from "react-icons/bs"
+
 
 const DoctorDashboard = () => {
 
@@ -12,8 +15,14 @@ const DoctorDashboard = () => {
           Bienvenido Dr/a {user.name} {user.lastName}
         </h2>
         <div className="panels">
-          <Panel to="/appointment" content="Ver Citas"/>
-          <Panel to="/history" content="Historial" />
+          <Panel to="/appointment" content={<>
+            <BsCalendarDate size="2rem"/>
+            <h3>Citas</h3>
+          </>}/>
+          <Panel to="/history" content={<>
+            <FaNotesMedical size="2rem"/>
+            <h3>Historial</h3>
+          </>} />
         </div>
       </div>
     </div>

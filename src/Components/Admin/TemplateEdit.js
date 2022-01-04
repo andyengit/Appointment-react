@@ -1,6 +1,7 @@
 import axios from "axios"
 import api from "../../Helpers/api.json"
 import { useState, useEffect } from "react"
+import Button from "../Button"
 
 const TemplateEdit = (el) => {
   
@@ -49,14 +50,15 @@ const TemplateEdit = (el) => {
               <option>Seleccionar</option>
               {!!specialities && specialities.map((e,i) => <option key={i} value={e.name}>{e.name}</option>) }
             </select>
-            <button onClick={InsertSpeciality}>Añadir</button>
+            <Button onClick={InsertSpeciality} title="Añadir"/>
           </div>
           <h2>Eliminar</h2>
           {personalS !== null ? <select onChange={(e) => setoptionDelete(e.target.value)}>
           <option>Seleccionar</option>
           {personalS.map((e,i) => <option key={e.id} value={e.id}>{e.speciality_name}</option>)}
            </select> : <h3>No se encuentran especialidades</h3>}
-          {personalS !== null  && <button onClick={DeleteSpeciality}>Eliminar</button>}
+
+          {personalS !== null  && <Button onClick={DeleteSpeciality} color="#C0392B" title="Eliminar"/>}
         </div>
 
       </div>
