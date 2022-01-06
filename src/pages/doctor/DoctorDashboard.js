@@ -12,7 +12,7 @@ const DoctorDashboard = () => {
     <div className="content">
       <div className="container">
         <h2>
-          Bienvenido Dr/a {user.name} {user.lastName}
+          Bienvenido Dr/a {user.firstname} {user.lastname}
         </h2>
         <div className="panels">
           <Panel to="/appointment" content={<>

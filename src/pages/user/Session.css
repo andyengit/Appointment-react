@@ -32,3 +32,16 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
+.link{
+  color: #2980b9;
+}
+.link:hover{
+  color:#1B4F72;
+}
+
+.links{
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+}

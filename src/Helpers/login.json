@@ -2,8 +2,8 @@
   "logIn": true,
   "role" : "doctor",
   "token": "123456789",
-  "name": "Royberth",
-  "lastName": "Leon",
+  "firstname": "Royberth",
+  "lastname": "Leon",
   "ci": "28493779",
   "email": "doc@medtime.com"
 }

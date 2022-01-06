@@ -3,35 +3,32 @@ import { useEffect, useState } from "react"
 import Back from "../../Components/Back"
 import Button from "../../Components/Button"
 import Input from "../../Components/Input"
-import Loader from "../../Components/Loader"
 import api from "./../../Helpers/api.json"
 
 const NewSpeciality = () => {
 
   const [input, setinput] = useState({})
   const [specialities, setspecialities] = useState(null)
-  const [loader, setloader] = useState(true)
 
   useEffect(() => {
     axios.get(api.url+'/speciality')
-    .then(res => {
-      setspecialities(res.data); 
-      res.data.length > 0 && setloader(false);
-    })
+    .then(res => setspecialities(res.data))
     .catch(e => console.log(e))
   }, [])
 
   const handlerSub = () => {
-    setloader(true)
-    axios.post(api.url+"/speciality",input)
-    .then(res => {
-      if(res.statusText === "Created"){
-        axios.get(api.url+'/speciality')
-        .then(resa => {setspecialities(resa.data);setloader(false)})
-        .catch(e => console.log(e))
-      }
-    })
-    .catch(e => console.log(e))
+
+    if(input.name !== "" && input.name !== null && input.name !== undefined){
+      axios.post(api.url+"/speciality",input)
+      .then(res => {
+        if(res.statusText === "Created"){
+          axios.get(api.url+'/speciality')
+          .then(resa => setspecialities(resa.data))
+          .catch(e => console.log(e))
+        }
+      })
+      .catch(e => console.log(e))
+    }
   }
 
   return (
@@ -44,7 +41,6 @@ const NewSpeciality = () => {
           
         </div>
         <h2>Lista de especialidades</h2>
-        {loader && <Loader />}
         <div>
           
           

@@ -11,6 +11,14 @@
   font-size: 1.3rem;
 }
 
+.disabled{
+  cursor: not-allowed;
+  border-bottom: 2px solid #F1948A ;
+}
+.input.disabled:hover{
+  border-bottom: 2px solid #CB4335;
+}
+
 .input:hover{
   border-bottom: 2px solid #2980b9;
 }

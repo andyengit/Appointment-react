@@ -1,7 +1,7 @@
 import "./Message.css"
 
 
-const Message = ({content, type}) => {
+const Message = ({content,contentL, type}) => {
 
   const dictionary = () => {
     if(content === "Invalid input : Unprocessable Entity")
@@ -15,6 +15,8 @@ const Message = ({content, type}) => {
   return (
     <div className={`message ${type}`} >
       <p>{!!content && content}</p>
+      <p>{!!contentL && contentL}</p>
+      
     </div>
   )
 }

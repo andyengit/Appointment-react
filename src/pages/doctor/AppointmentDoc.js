@@ -31,7 +31,7 @@ const AppointmentDoc = () => {
           {
             !(List === null || List.length === 0) ? (
               <ul className="ul">
-                {List && List.map((a) => <AppointmentDocList key={a.id} state={a.status} ci={a.patient_ci} date={a.hour} position={a.position} />)}
+                {List && List.map((a) => <AppointmentDocList key={a.id} appointment={a}/>)}
               </ul>)
               :
               <ul className="ul">

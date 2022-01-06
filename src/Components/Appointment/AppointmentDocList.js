@@ -5,19 +5,24 @@ import { useState , useEffect } from "react";
 import axios from "axios";
 import api from "../../Helpers/api.json"
 
-const AppointmentDocList = (props) => {
+const AppointmentDocList = ({appointment}) => {
  
-  const [states, setStates] = useState(props.state);
+  const [states, setStates] = useState(appointment.status);
   const [window, setWindow] = useState(false);
-  const [data, setdata] = useState(null)
+  const [data, setdata] = useState(null);
+  const [put, setput] = useState(null)
 
   useEffect(() => {
-    axios.get(api.url+"/patient/"+props.ci)
+    axios.get(api.url+"/patient/"+appointment.patient_ci)
     .then(res => setdata(res.data[0]))
-  }, [props])
+  }, [appointment])
 
   const handleWindow = () => {
     setWindow(!window);
+  }
+
+  const confirmAppointment = () => {
+    setStates("done");
   }
 
   const reshedule = () => {
@@ -31,10 +36,10 @@ const AppointmentDocList = (props) => {
       {!!data && `${data.firstname} ${data.lastname}`} 
     </div>
     <div>
-      {props.date}
+      {appointment.day}
     </div>
     <div>
-      {(states === "active") && <Button color="#27AE60" onClick={() => setStates("done")} title="Confirmar"/>}
+      {(states === "active") && <Button color="#27AE60" onClick={confirmAppointment} title="Confirmar"/>}
       {(states === "active" || states === "done" || states === "reshedule") && <Button color="#C0392B" onClick={() => setStates("cancelled")} title="Cancelar"/>}
       {(states === "active" || states === "cancelled") && <Button onClick={() => {handleWindow()}} title="Reprogramar" />}
     </div>
