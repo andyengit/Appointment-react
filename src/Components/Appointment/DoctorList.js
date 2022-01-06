@@ -6,14 +6,9 @@ import axios from "axios";
 import api from "../../Helpers/api.json";
 import Input from "../Input";
 import { BsPersonCircle } from "react-icons/bs";
+import getDates from "../../Functions/getDates";
 
 const DoctorList = ({ ci, speciality }) => {
-
-  const getDates = () => {
-    let date = new Date();
-    let json = date.toJSON();
-    return json.slice(0, 10);
-  };
 
   const [Doc, setDoc] = useState(null);
   const [dataCheckout, setdataCheckout] = useState({

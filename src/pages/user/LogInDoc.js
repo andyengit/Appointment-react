@@ -44,8 +44,6 @@ const LogInDoc = () => {
       );
   };
 
-  console.log(error.message);
-
   return (
     <div className="content-session">
       <Back />

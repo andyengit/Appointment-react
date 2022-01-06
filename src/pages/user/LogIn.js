@@ -44,8 +44,6 @@ const LogIn = () => {
       );
   };
 
-  console.log(error.message);
-
   return (
     <div className="content-session">
       <Back />
@@ -70,7 +68,7 @@ const LogIn = () => {
           <Button onClick={handleLogin} title="Enviar" />
           <div className="links">
             <Link to={"/login/doctor"} className="link">¿Eres doctor?</Link>
-            <Link className="link">¿Olvidaste tu contraseña?</Link>
+            <Link to={"#"} className="link">¿Olvidaste tu contraseña?</Link>
           </div>
         </div>
       </div>

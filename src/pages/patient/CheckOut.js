@@ -27,8 +27,6 @@ const CheckOut = () => {
       .catch(seterror(true))
   }
 
-  console.log(state)
-
   return (
     <div className="content">
       <Back/>

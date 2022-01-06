@@ -13,7 +13,6 @@ const AuthProvider = ({children}) => {
       localStorage.setItem("user",JSON.stringify(user));
     }catch(e){
       localStorage.removeItem("user");
-      console.log(e);
     }
   }, [user]);
   
