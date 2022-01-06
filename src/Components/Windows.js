@@ -11,8 +11,6 @@ const Windows = ({ close, check, update }) => {
 
 
   const reshedule = () => {
-
-    console.log(input)
     if (!!input) {
       axios.put(api.url + "/appointment/" + update.id, {
         doctor_ci: update.doctor_ci,

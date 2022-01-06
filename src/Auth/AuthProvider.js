@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react"
-import DataDoc from "../Helpers/login.json";
 import DataAdmin from "../Helpers/loginAdmin.json";
 export const AuthContext = createContext();
 
@@ -21,13 +20,14 @@ const AuthProvider = ({children}) => {
     user,
     login(type,data) {
       if (type === "D"){
-        setUser(DataDoc);
+        setUser(data);
       }else if(type === "P"){
         setUser(data);
       }else if (type === "A"){
         setUser(DataAdmin)
       }
     },
+    setUser,
     logout() {
       setUser(null);
       localStorage.removeItem("user");

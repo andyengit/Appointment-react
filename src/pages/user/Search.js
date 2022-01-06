@@ -13,9 +13,11 @@ const Search = () => {
   const [list, setlist] = useState(null);
 
   useEffect(() => {
-    axios.get(api.url+'/specialization/speciality/'+speciality)
-    .then(res => res.data.length > 0 ? setlist(res.data) : setlist(null))
-    .catch(setlist(null))
+    if(!!speciality && speciality !== ""){
+      axios.get(api.url+'/specialization/speciality/'+speciality)
+      .then(res => res.data.length > 0 ? setlist(res.data) : setlist(null))
+      .catch(setlist(null))
+    }
   }, [speciality])
 
   return (

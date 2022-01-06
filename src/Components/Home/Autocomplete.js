@@ -4,34 +4,29 @@ import formatStr from "../Function/formatStr";
 import Option from "./Option"
 import axios from "axios";
 import api from "../../Helpers/api.json"
-import {BiSearchAlt} from "react-icons/bi"
+import { BiSearchAlt } from "react-icons/bi"
 
-const Autocomplete = ({initial}) => {
+const Autocomplete = ({ initial }) => {
 
-  
   const [specialities, setspecialities] = useState([])
-  useEffect(() => {
-    axios.get(api.url+'/speciality')
-    .then(res => {
-      setspecialities(res.data)
-      if (initial !== undefined || initial !== null) {
-        let temp = res.data.find((el) => el.name === initial ? true : false)
-        setinput(temp.name);
-      }
-    })
-    .catch(e => console.log(e))
-  }, [initial])
-
   if (initial === undefined || initial === null) initial = "";
-
   const [input, setinput] = useState(initial);
   const [listSpe, setlist] = useState([]);
   const [indexFocus, setindexFocus] = useState(0);
   const [options, setoptions] = useState(false);
   const history = useHistory();
 
-  
-
+  useEffect(() => {
+    axios.get(api.url + '/speciality')
+      .then(res => {
+        setspecialities(res.data)
+        if (initial !== undefined && initial !== null && initial !== "") {
+          let temp = res.data.find((el) => { return el.name === initial ? true : false })
+          setinput(temp.name);
+        }
+      })
+      .catch(e => console.log(e))
+  }, [initial])
 
   useEffect(() => {
     const searchByText = (obj) => {
@@ -46,7 +41,7 @@ const Autocomplete = ({initial}) => {
 
     if (input !== "") {
 
-      if(!!specialities){
+      if (!!specialities) {
         setlist(specialities.filter(searchByText));
         let arr = specialities.find((el) => {
           if (formatStr(el.name.toLocaleLowerCase()) === formatStr(input.toLocaleLowerCase())) {
@@ -60,7 +55,7 @@ const Autocomplete = ({initial}) => {
         }
       }
     }
-  }, [input,specialities])
+  }, [input, specialities])
 
   const EnterSearch = (e) => {
 
@@ -111,7 +106,7 @@ const Autocomplete = ({initial}) => {
           </div>}
       </div>
       <button onClick={handleSearch} className="search-btn">
-        <BiSearchAlt color="white" size="2rem"/>
+        <BiSearchAlt color="white" size="2rem" />
       </button>
     </div>
   )

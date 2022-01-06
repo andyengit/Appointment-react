@@ -18,25 +18,20 @@ const LogInDoc = () => {
   const handleLogin = () => {
     seterror({ message: undefined, status: false });
 
-    axios
-      .post(api.url + "/user/login", data)
-      .then((res) => {
-        if (res.statusText === "OK" && !res.data.message) {
-          auth.login("P", {
-            logIn: true,
-            role: "patient",
-            jw: res.data.jw,
-            firstname: res.data.firstname,
-            lastname: res.data.lastname,
-            ci: res.data.ci,
-            email: res.data.email,
-            user_id: res.data.user_id,
-            city_id: res.data.city_id,
-          });
-          history.push("/dashboard");
-        }
-      })
-      .catch((er) =>
+    axios.get(api.url+"/doctor/28493779")
+    .then((res) => {
+      auth.login("D", {
+        logIn: true,
+        role: "doctor",
+        firstname: res.data[0].firstname,
+        lastname: res.data[0].lastname,
+        ci: res.data[0].ci,
+        user_id: res.data[0].user_id,
+        email: "doc@medtime.com"
+      });
+      history.push("/dashboard");
+    })
+    .catch((er) =>
         seterror({
           message: er.response.data.error + " : " + er.response.statusText,
           status: true,
@@ -65,13 +60,10 @@ const LogInDoc = () => {
             type="password"
             placeholder="Contraseña"
           />
-          <Button onClick={() => {
-              auth.login("D");
-              history.push("/dashboard");
-            }} title="Enviar" />
+          <Button onClick={handleLogin} title="Enviar" />
           <div className="links">
             <Link to="/login" className="link">¿Eres usuario?</Link>
-            <Link className="link">¿Olvidaste tu contraseña?</Link>
+            <Link to="#" className="link">¿Olvidaste tu contraseña?</Link>
           </div>
           
           <Button
