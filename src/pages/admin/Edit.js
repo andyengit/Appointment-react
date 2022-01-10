@@ -13,7 +13,7 @@ const Edit = () => {
             <FaStethoscope size="2rem"/>
             <h3>Doctor</h3>
           </>}/>
-          <Panel to="/edit/doc" content={<>
+          <Panel to="/edit/appointment" content={<>
             <BsCalendarDate size="2rem"/>
             <h3>Citas</h3>
           </>}/>

@@ -1,10 +1,12 @@
 import "./windows.css";
+import { AiOutlineCloseCircle } from "react-icons/ai"
 
-const Alert = ({close, message, title,content,props}) => {
+const Alert = ({ close, message, title, content, props }) => {
   return (
     <div className="background">
       <div className="windowAlert">
-        {!!title && <h2>{title}</h2> }
+        <AiOutlineCloseCircle className="closeWindow" size={"2rem"} onClick={close} />
+        {!!title && <h2>{title}</h2>}
         {!!content && content(props)}
         {!!message && <p>{message}</p>}
         <button onClick={() => close(false)}>Cerrar</button>

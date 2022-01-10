@@ -4,6 +4,7 @@ import axios from "axios";
 import api from "../Helpers/api.json"
 import Input from "./Input";
 import { useState } from "react";
+import { AiOutlineCloseCircle } from "react-icons/ai"
 
 const Windows = ({ close, check, update }) => {
 
@@ -29,10 +30,10 @@ const Windows = ({ close, check, update }) => {
   return (
     <div className="background">
       <div className="windowAlert">
+        <AiOutlineCloseCircle className="closeWindow" size={"2rem"} onClick={close} />
         <h2>Reprogramar</h2>
         <Input type={"date"} onChange={(e) => setinput(e.target.value)} />
         <Button onClick={reshedule} title="Aceptar" />
-        <Button onClick={close} title="Cerrar" />
       </div>
     </div>
   )

@@ -13,6 +13,7 @@
 }
 
 .windowAlert{
+  position: relative;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -23,4 +24,13 @@
   height: 60vh;
   background-color: whitesmoke;
   padding: 3rem;
+}
+
+.closeWindow{
+  position: absolute;
+  display: flex;
+  left: 2rem;
+  top: 2rem;
+  cursor: pointer;
+  color: #7B7D7D ;
 }

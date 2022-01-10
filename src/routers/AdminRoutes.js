@@ -7,6 +7,7 @@ import New from "../pages/admin/New";
 import NewSpeciality from "../pages/admin/NewSpeciality";
 import Edit from "../pages/admin/Edit";
 import AdmDoc from "../pages/admin/AdmDoc";
+import AdmAppointment from "../pages/admin/AdmAppointment";
 
 const AdminRoutes = () => {
     return (<Switch>
@@ -40,6 +41,7 @@ const EditPage = () => {
   return(
     <Switch>
       <Route exact path="/edit/doc" component={AdmDoc}/>
+      <Route exact path={"/edit/appointment"} component={AdmAppointment}/>
       <Route exact path="/edit" component={Edit} />
       <Route path="/edit/*">
         <Redirect to="/oops" />
