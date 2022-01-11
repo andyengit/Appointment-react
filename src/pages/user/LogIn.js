@@ -8,8 +8,12 @@ import Button from "../../Components/Button";
 import Back from "../../Components/Back";
 import Message from "../../Components/Message";
 import { Link } from "react-router-dom";
+import ButtonLink from "../../Components/ButtonLink";
+import { useLocation } from "react-router-dom";
+
 
 const LogIn = () => {
+  const {state} = useLocation();
   const auth = useAuth();
   const history = useHistory();
   const [data, setdata] = useState({ role: "patient" });
@@ -33,7 +37,7 @@ const LogIn = () => {
             user_id: res.data.user_id,
             city_id: res.data.city_id,
           });
-          history.push("/dashboard");
+          !!state ? history.push({pathname: "/CheckOut", state: state }) : history.push({pathname: "/dashboard"})
         }
       })
       .catch((er) =>
@@ -48,7 +52,7 @@ const LogIn = () => {
     <div className="content-session">
       <Back />
       <div className="container-session">
-        <h3>Iniciar sesion</h3>\
+        <h3>Iniciar sesion</h3>
         {error.message !== undefined && (
           <Message type={"m-error"} content={error.message.toString()} />
         )}
@@ -65,10 +69,14 @@ const LogIn = () => {
             type="password"
             placeholder="Contraseña"
           />
-          <Button onClick={handleLogin} title="Enviar" />
+          <div>
+            <ButtonLink border={"#5DADE2"} color={"transparent"} to={"/signin"} title={"Registrarte"}/>
+            <Button onClick={handleLogin} title="Enviar" />
+          </div>
+          
           <div className="links">
             <Link to={"/login/doctor"} className="link">¿Eres doctor?</Link>
-            <Link to={"#"} className="link">¿Olvidaste tu contraseña?</Link>
+            <Link to="/forgot" className="link">¿Olvidaste tu contraseña?</Link>
           </div>
         </div>
       </div>

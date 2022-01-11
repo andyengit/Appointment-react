@@ -1,7 +1,7 @@
 import axios from "axios"
 import api from "../../Helpers/api.json";
 import { useState, useEffect } from "react";
-import Button from "../Button";
+import "./HistoryList.css";
 
 const HistoryList = ({doctor,date,time}) => {
 
@@ -14,11 +14,10 @@ const HistoryList = ({doctor,date,time}) => {
   }, [doctor])
 
   return (
-    <tr>
-      <td>{!!doc && doc.firstname}</td>
-      <td>{date} {time}</td>
+    <tr className="tr-table">
+      <td> Dr. {!!doc && doc.firstname} {!!doc && doc.lastname}</td>
+      <td>{date}</td>
       <td>Especialidad</td>
-      <td><Button title="Administrar"/></td>
     </tr>
   )
 }

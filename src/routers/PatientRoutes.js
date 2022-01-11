@@ -4,6 +4,7 @@ import Appointment from "../pages/patient/Appointment";
 import CheckOut from "../pages/patient/CheckOut";
 import History from "../pages/patient/History";
 import Settings from "../pages/patient/Settings";
+import DocProfile from "../pages/admin/DocProfile";
 
 const PatientRoutes = () => {
     return (<Switch>
@@ -13,6 +14,7 @@ const PatientRoutes = () => {
       <Route exact path="/dashboard" component={PatientDashboard} />
       <Route exact path="/Settings" component={Settings}/>
       <Route exact path="/CheckOut" component={CheckOut} />
+      <Route path="/profile/:ci" component={DocProfile}/>
       <Route path="/search/:speciality" component={Appointment} />
       <Route path="/search/" component={Appointment} />
       <Route path="/History" component={History}/>

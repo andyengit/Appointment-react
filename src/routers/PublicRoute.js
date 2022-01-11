@@ -9,6 +9,9 @@ import Contact from "../pages/user/Contact";
 import AboutUs from "../pages/user/AboutUs";
 import DocInfo from "../pages/user/DocInfo";
 import LogInDoc from "../pages/user/LogInDoc";
+import LoginAdm from "../pages/user/LoginAdm";
+import ForgotPassword from "../pages/user/ForgotPassword";
+
 const PublicRoutes = () => {
 
   const auth = useAuth();
@@ -20,7 +23,9 @@ const PublicRoutes = () => {
       <Route exact path="/signin" component={SignIn}/>
       <Route exact path="/aboutUs" component={AboutUs}/>
       <Route exact path="/doc-info" component={DocInfo}/>
+      <Route exact path="/Forgot" component={ForgotPassword}/>
       <Route path="/login/doctor" component={LogInDoc}/>
+      <Route path="/login/admin" component={LoginAdm}/>
       <Route path="/login" component={LogIn}/>
       <Route path="/search/:speciality" component={Search}/>
       <Route path="/search/" component={Search}/>

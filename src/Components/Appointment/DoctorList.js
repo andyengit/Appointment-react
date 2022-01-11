@@ -31,7 +31,7 @@ const DoctorList = ({ ci, speciality }) => {
     if (isLogged()) {
       return { pathname: "/checkout", state: { dataCheckout } };
     } else {
-      return "/login";
+      return {pathname: "/login", state: { dataCheckout }};
     }
   };
 
@@ -60,7 +60,7 @@ const DoctorList = ({ ci, speciality }) => {
               setdataCheckout({ ...dataCheckout, day: e.target.value })
             }
           />
-          <ButtonLink to={toCheckout} title="RESERVAR" />
+          <ButtonLink to={toCheckout} border={"white"} title="RESERVAR" />
           <ButtonLink color="orange" to={`/profile/${ci}`} title="VER PERFIL" />
         </div>
       </li>

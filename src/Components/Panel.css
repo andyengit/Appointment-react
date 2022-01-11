@@ -14,3 +14,51 @@
   margin: 7px;
   font-weight: normal;
 }
+
+.next-date{
+  position: relative;
+  max-width: 80vw;
+  background-color: white;
+  width: 20rem;
+  height: 8rem;
+  display: flex;
+  margin: 1rem;
+  border-radius: 10px;
+  overflow:hidden;
+  flex-direction: column;
+}
+
+.header-next{
+  display: flex;
+  top: 100px;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#3498DB;
+  color: white;
+  font-weight: 600;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer-next{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #3498DB;
+  gap: 1rem;
+}
+
+.data-next{
+  color: #3498DB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.data-next>p{
+  font-weight: 550;
+  margin:0.1rem;
+}

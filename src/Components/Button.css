@@ -7,4 +7,13 @@
   color: white;
   border-radius: 0.3rem;
   cursor: pointer;
+  transition: 100ms;
+}
+
+.button:hover{
+  opacity: 70%;
+}
+
+.button:active{
+  background: #17202A;
 }

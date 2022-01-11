@@ -49,10 +49,14 @@ const AdmDoc = () => {
     </div>)
   }
 
+  const close = () => {
+    setwindow(!window)
+  }
+
   return (
     <div className="content">
       <Back/>
-      {window && <Alert close={setwindow} content={TemplateEdit} props={select}/>}
+      {window && <Alert close={close} content={TemplateEdit} props={select}/>}
       {confirm && <Alert close={setconfirm} content={Confirmate} props={select}/>}
       <div className="container">
         <Input placeholder="Cedula del doctor"/>

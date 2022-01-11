@@ -10,6 +10,7 @@ import Back from "../../Components/Back";
 
 const AppointmentDoc = () => {
 
+  const [input, setinput] = useState(null)
   const [List, setList] = useState(null);
   const { user } = useAuth();
 
@@ -23,24 +24,31 @@ const AppointmentDoc = () => {
       })
   }, [user])
 
-  const update = () => {
+  const Today = () => {
     axios.get(api.url + '/appointment/doctor/' + user.ci)
     .then(res => {
-      let list = res.data.filter((el) => {
+      setList(res.data.filter((el) => {
         return ((el.status === "active" || el.status === "done" ) && el.day === getDates())  ? true : false;
-      })
-      setList(list);
+      }));
     })
   }
+
+  const update = () => {
+    !!input && axios.get(api.url + '/appointment/doctor/' + user.ci)
+    .then(res => {
+      setList(res.data.filter((el) => el.day === input))
+    })
+  }
+
 
   return (
     <div className="content">
       <Back/>
       <div className="container">
         <div className="slideOption">
-          <Button title="Hoy" />
-          <Button title="Mañana" />
-          <Input type="date" />
+          <Input type="date" onChange={(e) => setinput(e.target.value)} />
+          <Button onClick={update} title="Buscar"/>
+          <Button onClick={Today} title="Hoy" />
         </div>
         <div>
           {

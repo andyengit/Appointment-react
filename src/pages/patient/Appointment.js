@@ -9,13 +9,15 @@ import { useParams } from "react-router-dom";
 const Appointment = () => {
 
 
-  const { speciality } = useParams();
+  let { speciality } = useParams();
   const [DocLi, setDocLi] = useState(null)
 
   useEffect(() => {
-    axios.get(api.url+'/specialization/speciality/'+speciality)
-    .then(res => res.data.length > 0 ? setDocLi(res.data) : setDocLi(null))
-    .catch(setDocLi(null))
+    if(!!speciality && speciality !== ""){
+      axios.get(api.url+'/specialization/speciality/'+speciality)
+      .then(res => res.data.length > 0 ? setDocLi(res.data) : setDocLi(null))
+      .catch(setDocLi(null))
+    }
   }, [speciality])
 
   return (

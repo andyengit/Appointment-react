@@ -6,6 +6,7 @@ import { useState } from "react";
 import SlidebarData from "./SlidebarData";
 import { BiMenu, BiChevronsLeft, BiLogOut} from 'react-icons/bi';
 import Logo from "../img/MEDTIME.svg";
+import ButtonLink from "../Components/ButtonLink";
 
 const Header = () => {
   const auth = useAuth();
@@ -29,6 +30,7 @@ const Header = () => {
         <Link to="#" className="menu-btn">
           <BiMenu  size="2.5em" color="#2980b9" onClick={showSidebar}/>
         </Link>
+        {!auth.isLogged() &&  <ButtonLink to={"/login"} border={"#5DADE2"} color={"transparent"} title="Iniciar sesión"/>}
         <Link to={auth.isLogged() ? "/dashboard" : "/"}>
           <div className="Logo">
             <img src={Logo}  className="logo-foto" alt="Medtime"/>

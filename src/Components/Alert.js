@@ -9,7 +9,6 @@ const Alert = ({ close, message, title, content, props }) => {
         {!!title && <h2>{title}</h2>}
         {!!content && content(props)}
         {!!message && <p>{message}</p>}
-        <button onClick={() => close(false)}>Cerrar</button>
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ import Button from "../Button";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import api from "../../Helpers/api.json";
+import getDates from "../../Functions/getDates";
 
 const AppointmentDocList = ({ appointment , funcUpdate }) => {
   const [states, setStates] = useState(appointment.status);
@@ -48,7 +49,7 @@ const AppointmentDocList = ({ appointment , funcUpdate }) => {
       <div>{!!data && `${data.firstname} ${data.lastname}`}</div>
       <div>{appointment.day}</div>
       <div>
-        {states === "active" && (
+        {(states === "active" && appointment.day === getDates()) && (
           <Button
             color="#27AE60"
             onClick={confirmAppointment}

@@ -31,6 +31,15 @@ const NewAccount = () => {
       );
   };
 
+  const handle64 = (e) => {
+    let render = new FileReader();
+    render.readAsDataURL(e.target.files[0]);
+    render.onloadend = () => {
+      setInputs({...inputs,image: render.result}) ;
+    }
+
+  }
+
   return (
     <div className="content">
       <Back />
@@ -83,6 +92,7 @@ const NewAccount = () => {
             type="number"
             onChange={(e) => setInputs({ ...inputs, cost: e.target.value })}
           />
+          <input type="file" onChange={handle64}/>
           <button type="submit">Registrar Doctor</button>
         </form>
       </div>
