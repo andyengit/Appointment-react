@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import api from "../../Helpers/api.json";
 import Input from "../Input";
-import { BsPersonCircle } from "react-icons/bs";
 import getDates from "../../Functions/getDates";
 
 const DoctorList = ({ ci, speciality }) => {
@@ -25,13 +24,13 @@ const DoctorList = ({ ci, speciality }) => {
       .catch((e) => console.log(e));
   }, [ci]);
 
-  
+
 
   const toCheckout = () => {
     if (isLogged()) {
       return { pathname: "/checkout", state: { dataCheckout } };
     } else {
-      return {pathname: "/login", state: { dataCheckout }};
+      return { pathname: "/login", state: { dataCheckout } };
     }
   };
 
@@ -39,9 +38,8 @@ const DoctorList = ({ ci, speciality }) => {
     Doc && (
       <li className="container-items">
         <div className="doc-info">
-          <BsPersonCircle size="3rem" />
+          <img src={!!Doc && Doc.image} className="photo-perfil" alt="Perfil" />
           <span>{Doc.firstname + " " + Doc.lastname}</span>
-          <p>{Doc.speciality}</p>
         </div>
         <div className="extra">
           <p>

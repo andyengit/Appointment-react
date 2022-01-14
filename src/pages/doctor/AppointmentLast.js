@@ -31,7 +31,7 @@ const AppointmentLast = () => {
 
             :
             <ul>
-              <li><h2>NO hay para mostar</h2></li>
+              <li><h2>No hay citas pasadas</h2></li>
             </ul>}
         </div>
       </div>

@@ -13,9 +13,16 @@ const History = () => {
   useEffect(() => {
     axios.get(api.url + "/appointment/patient/" + user.ci)
       .then((res) => {
-        sethistories(res.data.filter(el => el.status === "done" ))
+        sethistories(res.data.filter(el => el.status === "done"  || el.status === "active"))
       })
   }, [user])
+
+  const updateList = () => {
+    axios.get(api.url + "/appointment/patient/" + user.ci)
+    .then((res) => {
+      sethistories(res.data.filter(el => el.status === "done"  || el.status === "active"))
+    })
+  }
 
   return (<div className="content">
     <div className="container">
@@ -29,7 +36,7 @@ const History = () => {
           </tr>
         </thead>
         <tbody>
-          {!!histories && histories.map((h, i) => <HistoryList key={i} doctor={h.doctor_ci} date={h.day} time={h.hour} />) }
+          {!!histories && histories.map((h, i) => <HistoryList key={i} data={h} update={updateList}/>) }
         </tbody>
       </table>
       {(!!histories && histories.length === 0) && <h3>No hay citas pasadas</h3>}

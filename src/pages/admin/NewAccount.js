@@ -10,34 +10,51 @@ const NewAccount = () => {
   const [correct, setcorrect] = useState(false);
   const [error, seterror] = useState(false);
 
+  const verify = () => {
+    if (Object.keys(inputs).length === 9) {
+      if (Object.keys(inputs).find(e => e !== "")) {
+        return true;
+      }
+    }
+    seterror({
+      message: "Datos incompletos",
+      status: true
+    })
+    return false;
+  }
+
   const onSubmit = (e) => {
     seterror({ message: undefined, status: false });
     setcorrect(false);
     e.preventDefault();
-    axios
-      .post(api.url + "/doctor", {
-        role: "doctor",
-        ...inputs,
-      })
-      .then((res) => {
-        res.status !== 422 && setcorrect(true);
-        setInputs(null)
-      })
-      .catch((er) =>
-        seterror({
-          message: er.response.data.error + " : " + er.response.statusText,
-          status: true,
+
+    if (verify()) {
+      axios
+        .post(api.url + "/doctor", {
+          role: "doctor",
+          ...inputs,
         })
-      );
+        .then((res) => {
+          res.status !== 422 && setcorrect(true);
+          setInputs(null)
+        })
+        .catch((er) =>
+          seterror({
+            message: er.response.data.error + " : " + er.response.statusText,
+            status: true,
+          })
+        );
+    }
   };
 
   const handle64 = (e) => {
-    let render = new FileReader();
-    render.readAsDataURL(e.target.files[0]);
-    render.onloadend = () => {
-      setInputs({...inputs,image: render.result}) ;
+    if (!!e.target.files[0]) {
+      let render = new FileReader();
+      render.readAsDataURL(e.target.files[0]);
+      render.onloadend = () => {
+        setInputs({ ...inputs, image: render.result });
+      }
     }
-
   }
 
   return (
@@ -92,7 +109,7 @@ const NewAccount = () => {
             type="number"
             onChange={(e) => setInputs({ ...inputs, cost: e.target.value })}
           />
-          <input type="file" onChange={handle64}/>
+          <input type="file" onChange={handle64} />
           <button type="submit">Registrar Doctor</button>
         </form>
       </div>

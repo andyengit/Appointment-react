@@ -13,13 +13,17 @@ const PatientDashboard = () => {
 
   const { user } = useAuth();
   const [next, setnext] = useState(null);
+  const [doc, setdoc] = useState(null)
 
   useEffect(() => {
     axios.get(api.url + "/appointment/patient/" + user.ci)
       .then(res => setnext(res.data.find(e => e.day === getDates()  && e.status === "active")))
   }, [user])
 
-  console.log(next)
+  useEffect(() => {
+    !!next && axios.get(api.url + "/doctor/" + next.doctor_ci)
+    .then(res => setdoc(res.data[0]))
+  },[next])
 
   const cancelAppointment = () => {
     axios
@@ -54,7 +58,7 @@ const PatientDashboard = () => {
               </header>
               <footer className="footer-next">
                 <div className="data-next">
-                  <p>{next.doctor_ci}</p>
+                  <p>{!!doc && doc.firstname} {!!doc && doc.lastname}</p>
                   <p>{next.day}</p>
                 </div>
                 <Button onClick={cancelAppointment} color="#C0392B" title="Cancelar" />

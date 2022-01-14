@@ -20,12 +20,22 @@ const Settings = () => {
 
   const updateData = () => {
     if (inputs.firstname !== "" && inputs.lastname !== "") {
-      axios.put(api.url + "/doctor/" + user.ci, {...initialData, firstname: inputs.firstname, lastname: inputs.lastname})
+      axios.put(api.url + "/doctor/" + user.ci, { ...initialData, firstname: inputs.firstname, lastname: inputs.lastname })
         .then(() => {
           setUser({ ...user, firstname: inputs.firstname, lastname: inputs.lastname })
         })
     }
+  }
 
+
+  const updateImage = (e) => {
+    if (inputs.image !== "" || !!inputs.image) {
+      let render = new FileReader();
+      render.readAsDataURL(e.target.files[0]);
+      render.onloadend = () => {
+        axios.put(api.url + "/doctor/" + user.ci, { ...initialData, image: render.result })
+      }  
+    }
   }
 
   const updateAppointment = () => {
@@ -42,6 +52,7 @@ const Settings = () => {
     <div className="content-session">
       <Back />
       <div className="container-session">
+
         <h4>Datos personales</h4>
         <div>
           <Input onChange={(e) => setinputs({ ...inputs, firstname: e.target.value })} placeholder={!!user && user.firstname} />
@@ -52,7 +63,7 @@ const Settings = () => {
         </div>
         <h4>Foto</h4>
         <div>
-          <input type="file" />
+          <input type="file" onChange={updateImage}  />
           <Button title="Guardar cambios" />
         </div>
 

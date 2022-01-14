@@ -19,13 +19,13 @@ const AdmDoc = () => {
   const [confirm, setconfirm] = useState(false)
 
   useEffect(() => {
-    axios.get(api.url+"/doctor")
-    .then(res => {setlist(res.data);setloader(false)})
-    .catch();
+    axios.get(api.url + "/doctor")
+      .then(res => { setlist(res.data); setloader(false) })
+      .catch();
   }, [])
 
   const showEdit = (el) => {
-    setwindow(true); 
+    setwindow(true);
     setselect(el);
   }
 
@@ -35,18 +35,22 @@ const AdmDoc = () => {
   }
 
   const confirmDelete = () => {
-    axios.delete(api.url+'/doctor/'+select)
-    .then(setlist(null), setconfirm(false))
-    .catch(e => console.log(e))
+    axios.delete(api.url + '/doctor/' + select)
+      .then(() => {
+        axios.get(api.url + "/doctor")
+          .then(res => { setlist(res.data); setloader(false) })
+        setconfirm(false)
+      })
+      .catch(e => e.response.status === 404 && setlist(null))
   }
 
   const Confirmate = () => {
-    return(
-    <div>
-      <h3>Desea eliminar el doctor?</h3>
-      <button onClick={confirmDelete}>Si</button>
-      <button onClick={() => setconfirm(false)}>No</button>
-    </div>)
+    return (
+      <div>
+        <h3>Desea eliminar el doctor?</h3>
+        <button onClick={confirmDelete}>Si</button>
+        <button onClick={() => setconfirm(false)}>No</button>
+      </div>)
   }
 
   const close = () => {
@@ -55,29 +59,29 @@ const AdmDoc = () => {
 
   return (
     <div className="content">
-      <Back/>
-      {window && <Alert close={close} content={TemplateEdit} props={select}/>}
-      {confirm && <Alert close={setconfirm} content={Confirmate} props={select}/>}
+      <Back />
+      {window && <Alert close={close} content={TemplateEdit} props={select} />}
+      {confirm && <Alert close={setconfirm} content={Confirmate} props={select} />}
       <div className="container">
-        <Input placeholder="Cedula del doctor"/>
-        {loader && <Loader/>}
+        <Input placeholder="Cedula del doctor" />
+        {loader && <Loader />}
         <table className="table-doc">
           <thead>
             <tr>
               <th>Nombre</th>
               <th>Accion</th>
-            </tr> 
+            </tr>
           </thead>
           <tbody>
-            {list && list.map((el, i) => 
+            {list && list.map((el, i) =>
               <tr key={i}>
                 <td>{el.firstname} {el.lastname}</td>
                 <td>
-                  <Button onClick={() => showEdit(el)} title="Editar"/>
-                  <Button onClick={() => deleteDoc(el)} color="#C0392B" title="Borrar"/>
+                  <Button onClick={() => showEdit(el)} title="Editar" />
+                  <Button onClick={() => deleteDoc(el)} color="#C0392B" title="Borrar" />
                 </td>
-             </tr>)}
-            
+              </tr>)}
+
           </tbody>
         </table>
       </div>

@@ -33,11 +33,10 @@ const CheckOut = () => {
       {check ?
         <div className="container">
           <AiFillCheckCircle size="4rem" color='#2ECC71'/>
-          <p>Id Cita: 879347928934892</p>
           <p>Direccion: Hospital Central</p>
           <p>Av Libertador</p> 
-          <p>Hora <b>{!!state && state.dataCheckout.hour}</b></p>
-
+          <p>Fecha: {!!state && state.dataCheckout.day}</p> 
+          <p>Hora <b>{!!doc && doc.starts_at}</b></p>
           <h2>CONFIRMADO</h2>
         </div>
         :

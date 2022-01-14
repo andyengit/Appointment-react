@@ -17,7 +17,7 @@ const Edit = () => {
             <BsCalendarDate size="2rem"/>
             <h3>Citas</h3>
           </>}/>
-          <Panel to="/edit/doc" content={<>
+          <Panel to="/edit/especiality/" content={<>
             <FaNotesMedical size="2rem"/>
             <h3>Especialidades</h3>
           </>}/>

@@ -4,8 +4,11 @@ import "./Message.css"
 const Message = ({content,contentL, type}) => {
 
   const dictionary = () => {
-    if(content === "Invalid input : Unprocessable Entity")
-    return "Datos erroneos"
+    if(content === "Invalid input : Unprocessable Entity"){
+      return "Datos erroneos"
+    } else if ( content === "Datos incompletos"){
+      return content;
+    }
   }
 
   if(!!content){
