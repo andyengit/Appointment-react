@@ -34,8 +34,8 @@ const Settings = () => {
       <div className="container-session">
         <h4>Datos personales</h4>
         <div>
-          <Input onChange={(e) => setinputs({...inputs, firstname: e.target.value})} placeholder={!!user && user.firstname} />
-          <Input onChange={(e) => setinputs({...inputs, lastname: e.target.value})} placeholder={!!user && user.lastname} />
+          <Input onChange={(e) => setinputs({...inputs, firstname: e.target.value.trim()})} placeholder={!!user && user.firstname} />
+          <Input onChange={(e) => setinputs({...inputs, lastname: e.target.value.trim()})} placeholder={!!user && user.lastname} />
           <Input disabled placeholder={!!user && user.ci} />
           <Input disabled placeholder={user.email} />
           <Button onClick={handleUpdate} title="Guardar cambios"/>

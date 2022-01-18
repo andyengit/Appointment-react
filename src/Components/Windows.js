@@ -32,7 +32,7 @@ const Windows = ({ close, check, update }) => {
       <div className="windowAlert">
         <AiOutlineCloseCircle className="closeWindow" size={"2rem"} onClick={close} />
         <h2>Reprogramar</h2>
-        <Input type={"date"} onChange={(e) => setinput(e.target.value)} />
+        <Input type={"date"} onChange={(e) => setinput(e.target.value.trim())} />
         <Button onClick={reshedule} title="Aceptar" />
       </div>
     </div>

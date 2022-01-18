@@ -24,7 +24,8 @@
   transition: 850ms;
   border-right: 4px solid #2980b980;
   z-index: 1001;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .nav-menu.active{
@@ -54,6 +55,9 @@
 
 .nav-text a:hover{
   background:   #d6eaf8  ;
+}
+.nav-active{
+  background:   #d6eaf890;
 }
 
 .nav-menu-items{

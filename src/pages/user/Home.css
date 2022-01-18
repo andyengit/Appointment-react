@@ -1,5 +1,5 @@
 .start{
-  width: 100vw;
+  width: 100%;
   height: calc(100vh) ;
   min-height: calc(100vh - 8rem);
   background-image: url("../../img/header.jpg");
@@ -32,7 +32,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
 }

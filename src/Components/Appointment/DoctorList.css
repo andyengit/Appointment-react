@@ -12,8 +12,11 @@
   padding-bottom: 5px;
   padding-left: 3px;
   padding-right: 3px;
-
 }
+.container-items:last-child{
+  margin-bottom: 2rem;
+}
+
 .check{
   display: flex;
   flex-direction: column;

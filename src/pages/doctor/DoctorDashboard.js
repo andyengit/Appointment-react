@@ -1,16 +1,26 @@
 import useAuth from "../../Auth/useAuth"
 import Panel from "../../Components/Panel";
-import {FaNotesMedical} from "react-icons/fa"
+import {FaNotesMedical, FaSearch} from "react-icons/fa"
 import {BsCalendarDate} from "react-icons/bs"
-
+import api from "../../Helpers/api.json"
+import axios from "axios";
+import { useState, useEffect} from "react";
+import "./DoctorDashboard.css"
 
 const DoctorDashboard = () => {
 
   const { user } = useAuth();
+  const [img, setimg] = useState(null);
+
+  useEffect(() => {
+    axios.get(api.url + "/doctor/"+ user.ci)
+    .then(res => setimg(res.data[0].image))
+  },[])
 
   return (
     <div className="content">
       <div className="container">
+        {!!img && <img className="dash-photo" src={img}></img>}
         <h2>
           Bienvenido Dr/a {user.firstname} {user.lastname}
         </h2>
@@ -22,6 +32,10 @@ const DoctorDashboard = () => {
           <Panel to="/history" content={<>
             <FaNotesMedical size="2rem"/>
             <h3>Historial</h3>
+          </>} />
+          <Panel to="/search" content={<>
+            <FaSearch size="2rem"/>
+            <h3>Obtener Cita</h3>
           </>} />
         </div>
       </div>

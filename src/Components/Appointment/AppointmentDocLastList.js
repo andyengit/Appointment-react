@@ -1,4 +1,3 @@
-import ButtonLink from "../ButtonLink";
 import {BsCheck2Square} from "react-icons/bs";
 import {MdCancel} from "react-icons/md";
 import {AiOutlineClockCircle} from "react-icons/ai";
@@ -19,7 +18,6 @@ const AppointmentDocLastList = ({ data }) => {
     <div>{data.patient_ci}</div>
     <div>{data.day}</div>
     <div>{status}</div>
-    <div><ButtonLink to={`/`} title="Perfil" /></div>
   </li>
   )
 }

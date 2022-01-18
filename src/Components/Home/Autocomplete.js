@@ -25,7 +25,6 @@ const Autocomplete = ({ initial }) => {
           setinput(temp.name);
         }
       })
-      .catch(e => console.log(e))
   }, [initial])
 
   useEffect(() => {
@@ -99,7 +98,7 @@ const Autocomplete = ({ initial }) => {
   return (
     <div className="search">
       <div className="autocomplete">
-        <input autoComplete="off" onKeyDownCapture={EnterSearch} onChange={(e) => setinput(e.target.value)} className="search-main" type="text" placeholder="Escriba una especialidad" value={input} />
+        <input autoComplete="off" onKeyDownCapture={EnterSearch} onChange={(e) => setinput(e.target.value.trim())} className="search-main" type="text" placeholder="Escriba una especialidad" value={input} />
         {options &&
           <div className="options">
             {input !== "" && listSpe.map((es, i) => <Option key={i} set={[setinput, setoptions]} enter={EnterSearch} s={i} index={indexFocus === i ? true : false} input={input} name={es.name} />)}

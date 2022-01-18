@@ -24,13 +24,13 @@ const AppointmentAdm = ({ data, check }) => {
 
   return (
     <>
-      <li className="li">
-        <div>{data.patient_ci}</div>
-        <div>{data.doctor_ci}</div>
-        <div>{data.day}</div>
-        <div>{status}</div>
-        <Button onClick={handleWindow} title="Administrar" />
-      </li>
+      <tr>
+        <td>{data.patient_ci}</td>
+        <td>{data.doctor_ci}</td>
+        <td>{data.day}</td>
+        <td>{status}</td>
+        <td><Button onClick={handleWindow} title="Administrar" /></td>
+      </tr>
       {window && <AdmAppointmentWindow update={data} check={check} close={handleWindow} />}
     </>
   )

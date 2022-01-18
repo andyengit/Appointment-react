@@ -14,8 +14,7 @@ const DocInfo = () => {
         <Input placeholder="Nombre y Apellido" />
         <Input placeholder="Correo" />
         <Input placeholder="Telefono" />
-        <Input placeholder="Especialidad" />
-        <Input placeholder="Año de promocion" />
+        <Input placeholder="Especialidad/es" />
         <textarea className="textarea" rows="3" placeholder="Acerca de ti" />
         <Button title="Enviar Correo"/>
       </div>

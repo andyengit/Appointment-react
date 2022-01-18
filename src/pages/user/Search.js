@@ -26,7 +26,7 @@ const Search = () => {
       <div className="mini-header">
         <Autocomplete type="search" initial={speciality} />
         <div className="container-list">
-          {list ? list.map(d =><DoctorList key={d.id} ci={d.doctor_ci} /> ) : speciality === undefined ? <h2>¿Que especilaidad desea buscar?</h2> : <h2>No se encuentran doctores disponibles</h2> }
+          {list ? list.map(d =><DoctorList key={d.id} ci={d.doctor_ci} /> ) : speciality === undefined ? <h2>¿Que especialidad desea buscar?</h2> : <h2>No se encuentran doctores disponibles</h2> }
         </div>
       </div>
     </div>

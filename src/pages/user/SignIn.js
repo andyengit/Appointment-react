@@ -30,7 +30,6 @@ const SignIn = () => {
         });
         setstate(result);
       })
-      .catch((e) => console.log(e));
   }, []);
 
   useEffect(() => {
@@ -72,28 +71,28 @@ const SignIn = () => {
         {error.message !== undefined && <Message type={"m-error"} content={error.message.toString()}/>}
         <div className="form">
           <Input
-            onChange={(e) => setdata({ ...data, firstname: e.target.value })}
+            onChange={(e) => setdata({ ...data, firstname: e.target.value.trim() })}
             placeholder="Nombre"
           />
           <Input
-            onChange={(e) => setdata({ ...data, lastname: e.target.value })}
+            onChange={(e) => setdata({ ...data, lastname: e.target.value.trim() })}
             placeholder="Apellido"
           />
           <Input
-            onChange={(e) => setdata({ ...data, ci: e.target.value })}
+            onChange={(e) => setdata({ ...data, ci: e.target.value.trim() })}
             placeholder="Cedula"
           />
           <Input
             type="password"
-            onChange={(e) => setdata({ ...data, password: e.target.value })}
+            onChange={(e) => setdata({ ...data, password: e.target.value.trim() })}
             placeholder="Contraseña"
           />
           <Input
             type="email "
-            onChange={(e) => setdata({ ...data, email: e.target.value })}
+            onChange={(e) => setdata({ ...data, email: e.target.value.trim() })}
             placeholder="Correo electronico"
           />
-          <select onChange={(e) => setselect(e.target.value)}>
+          <select onChange={(e) => setselect(e.target.value.trim())}>
             <option value="">Selecciona el estado</option>
             {!!state &&
               state.map((el, key) => (

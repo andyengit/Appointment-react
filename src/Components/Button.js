@@ -1,8 +1,15 @@
 import "./Button.css"
 
-const Button = ({title,onClick,color}) => {
+const Button = ({title,onClick,color,border}) => {
+
+  const style = {
+    backgroundColor: color,
+    border: "1px solid " + border,
+    color: (!!border && border !== "transparent") && border   
+  }
+
   return (
-    <button style={color && {backgroundColor: color}} className="button" onClick={onClick}>{title}</button>
+    <button style={style} className="button" onClick={onClick}>{title}</button>
   )
 }
 

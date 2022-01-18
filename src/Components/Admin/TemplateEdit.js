@@ -28,7 +28,7 @@ const TemplateEdit = (el) => {
         axios.get(api.url + '/specialization/doctor/' + el.ci)
           .then(res => setpersonalS(res.data))
           .catch(setpersonalS(null))
-      ).catch(e => console.log(e))
+      )
     }
   }
 
@@ -51,14 +51,14 @@ const TemplateEdit = (el) => {
         <div>
           <div>
             <h2>Agregar</h2>
-            <select onChange={(e) => setoption(e.target.value)}>
+            <select onChange={(e) => setoption(e.target.value.trim())}>
               {!option && <option>Seleccionar</option>}
               {!!specialities && specialities.map((e, i) => <option key={i} value={e.name}>{e.name}</option>)}
             </select>
             <Button onClick={InsertSpeciality} title="Añadir" />
           </div>
           <h2>Eliminar</h2>
-          {personalS !== null ? <select onChange={(e) => setoptionDelete(e.target.value)}>
+          {personalS !== null ? <select onChange={(e) => setoptionDelete(e.target.value.trim())}>
             {!optionDelete && <option value={null}>Seleccionar</option>}
             {personalS.map((e) => <option key={e.id} value={e.id}>{e.speciality_name}</option>)}
           </select> : <h3>No se encuentran especialidades</h3>}

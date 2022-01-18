@@ -58,14 +58,14 @@ const LogIn = () => {
         )}
         <div className="form">
           <Input
-            onChange={(e) => setdata({ ...data, email: e.target.value })}
+            onChange={(e) => setdata({ ...data, email: e.target.value.trim() })}
             type="email"
             autocomplete="on"
             placeholder="Correo"
           />
           <Input
             onEnter={handleLogin}
-            onChange={(e) => setdata({ ...data, password: e.target.value })}
+            onChange={(e) => setdata({ ...data, password: e.target.value.trim() })}
             type="password"
             placeholder="Contraseña"
           />

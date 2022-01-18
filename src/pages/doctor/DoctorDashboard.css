@@ -1,0 +1,9 @@
+.dash-photo{
+  overflow: hidden;
+  width: 10rem;
+  height: 10rem;
+  max-width: 10rem;
+  max-height: 10rem;
+  border-radius: 5000000000000rem;
+  object-fit: cover;
+}

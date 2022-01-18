@@ -9,6 +9,7 @@
   background-color:whitesmoke ; 
   display: flex;
   margin-top: 4rem;
+  width: 100%;
   min-height: calc(100vh - 4rem);
   justify-content: center;
 }

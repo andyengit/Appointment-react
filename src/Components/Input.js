@@ -1,4 +1,5 @@
 import "./Input.css"
+import getDates from "../Functions/getDates"
 
 const Input = ({name,id,aC, onChange,type,placeholder, onEnter,max,min, disabled, value}) => {
 
@@ -13,7 +14,7 @@ const Input = ({name,id,aC, onChange,type,placeholder, onEnter,max,min, disabled
       className={`input ${!!disabled && "disabled"}`}
       onKeyUp={Submit}  
       max={max} 
-      min={min} 
+      min={type === "date" ? getDates() : min } 
       onChange={onChange} 
       type={type ? type : "text"} 
       placeholder={placeholder} 

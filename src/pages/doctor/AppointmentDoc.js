@@ -46,7 +46,7 @@ const AppointmentDoc = () => {
       <Back/>
       <div className="container">
         <div className="slideOption">
-          <Input type="date" onChange={(e) => setinput(e.target.value)} />
+          <Input type="date" onChange={(e) => setinput(e.target.value.trim())} />
           <Button onClick={update} title="Buscar"/>
           <Button onClick={Today} title="Hoy" />
         </div>

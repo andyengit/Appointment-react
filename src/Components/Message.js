@@ -8,6 +8,8 @@ const Message = ({content,contentL, type}) => {
       return "Datos erroneos"
     } else if ( content === "Datos incompletos"){
       return content;
+    } else{
+      return content;
     }
   }
 

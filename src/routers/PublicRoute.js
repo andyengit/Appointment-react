@@ -11,6 +11,7 @@ import DocInfo from "../pages/user/DocInfo";
 import LogInDoc from "../pages/user/LogInDoc";
 import LoginAdm from "../pages/user/LoginAdm";
 import ForgotPassword from "../pages/user/ForgotPassword";
+import Doctors from "../pages/user/Doctors"
 
 const PublicRoutes = () => {
 
@@ -24,6 +25,7 @@ const PublicRoutes = () => {
       <Route exact path="/aboutUs" component={AboutUs}/>
       <Route exact path="/doc-info" component={DocInfo}/>
       <Route exact path="/Forgot" component={ForgotPassword}/>
+      <Route exact path="/doctors" component={Doctors}/>
       <Route path="/login/doctor" component={LogInDoc}/>
       <Route path="/login/admin" component={LoginAdm}/>
       <Route path="/login" component={LogIn}/>

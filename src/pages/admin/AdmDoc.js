@@ -8,6 +8,7 @@ import Loader from "../../Components/Loader"
 import Alert from "../../Components/Alert"
 import TemplateEdit from "../../Components/Admin/TemplateEdit"
 import Button from "../../Components/Button"
+import ButtonLink from "../../Components/ButtonLink"
 
 
 const AdmDoc = () => {
@@ -17,6 +18,7 @@ const AdmDoc = () => {
   const [window, setwindow] = useState(false);
   const [select, setselect] = useState(null);
   const [confirm, setconfirm] = useState(false)
+  const [input, setinput] = useState(null);
 
   useEffect(() => {
     axios.get(api.url + "/doctor")
@@ -48,8 +50,8 @@ const AdmDoc = () => {
     return (
       <div>
         <h3>Desea eliminar el doctor?</h3>
-        <button onClick={confirmDelete}>Si</button>
-        <button onClick={() => setconfirm(false)}>No</button>
+        <Button onClick={confirmDelete} title={"Si"} />
+        <Button color={"#C0392B"} onClick={() => setconfirm(false)} title={'No'} />
       </div>)
   }
 
@@ -57,13 +59,35 @@ const AdmDoc = () => {
     setwindow(!window)
   }
 
+  const closeConfirm = () => {
+    setconfirm(!confirm);
+  }
+
+
+  const updateCi = () => {
+    if (!!input && input !== "") {
+      axios.get(api.url + "/doctor/")
+        .then(res => setlist(res.data.filter(el => el.ci === input)))
+
+    }
+  }
+
+  const resetCi = () => {
+    axios.get(api.url + "/doctor")
+      .then(res => { setlist(res.data); setloader(false) })
+  }
+
   return (
     <div className="content">
       <Back />
       {window && <Alert close={close} content={TemplateEdit} props={select} />}
-      {confirm && <Alert close={setconfirm} content={Confirmate} props={select} />}
+      {confirm && <Alert close={closeConfirm} content={Confirmate} props={select} />}
       <div className="container">
-        <Input placeholder="Cedula del doctor" />
+        <Input onEnter={updateCi} onChange={e => setinput(e.target.value.trim())} placeholder="Cedula del doctor" />
+        <div>
+          <Button onClick={updateCi} title={"Buscar"} />
+          <Button onClick={resetCi} title={"Reset"} />
+        </div>
         {loader && <Loader />}
         <table className="table-doc">
           <thead>
@@ -79,6 +103,7 @@ const AdmDoc = () => {
                 <td>
                   <Button onClick={() => showEdit(el)} title="Editar" />
                   <Button onClick={() => deleteDoc(el)} color="#C0392B" title="Borrar" />
+                  <ButtonLink to={"/profile/" + el.ci} title={"Ver perfil"} />
                 </td>
               </tr>)}
 

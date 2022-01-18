@@ -10,5 +10,5 @@ export default function formatStr(str) {
   newStr = newStr.replace(/[ìíîï]/g, 'i');
   newStr = newStr.replace(/[òóôõö]/g, 'o');
   newStr = newStr.replace(/[ùúûü]/g, 'u');
-  return newStr;
+  return newStr.toLowerCase().trim();
 }

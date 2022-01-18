@@ -54,7 +54,7 @@ const AdmAppointmentWindow = ({ close, check, update }) => {
         <h2>Administrar</h2>
         {(!!update.status && (update.status !== "done" && update.status !== "cancelled")) &&
           <div>
-            <Input onChange={(e) => setinput(e.target.value)} type={"date"} />
+            <Input onChange={(e) => setinput(e.target.value.trim())} type={"date"} />
             <Button onClick={reshedule} title={"Reprogramar"} />
           </div>
         }

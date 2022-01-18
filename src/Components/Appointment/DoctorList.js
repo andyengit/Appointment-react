@@ -6,9 +6,11 @@ import axios from "axios";
 import api from "../../Helpers/api.json";
 import Input from "../Input";
 import getDates from "../../Functions/getDates";
+import { useLocation } from "react-router-dom";
 
 const DoctorList = ({ ci, speciality }) => {
-
+  
+  const {pathname} = useLocation();
   const [Doc, setDoc] = useState(null);
   const [dataCheckout, setdataCheckout] = useState({
     speciality: speciality,
@@ -16,12 +18,16 @@ const DoctorList = ({ ci, speciality }) => {
     day: getDates()
   });
   const { isLogged } = useAuth();
+  const [specialities, setspecialities] = useState(null)
 
   useEffect(() => {
     axios
       .get(api.url + "/doctor/" + ci)
       .then((res) => (res.data.length > 0 ? setDoc(res.data[0]) : setDoc(null)))
-      .catch((e) => console.log(e));
+
+    axios
+      .get(api.url+"/specialization/doctor/"+ci)
+      .then(res => setspecialities(res.data.map((el,i) => <p key={i}>{el.speciality_name}</p>)))
   }, [ci]);
 
 
@@ -48,6 +54,10 @@ const DoctorList = ({ ci, speciality }) => {
           <p>
             Horario: <b>{Doc.starts_at}</b> a <b>{Doc.ends_at}</b>
           </p>
+          {pathname === "/doctors" &&
+          <p>
+            <b>Especialidad/es:</b>  {specialities}
+          </p>}
         </div>
         <div className="check">
           <Input
@@ -55,7 +65,7 @@ const DoctorList = ({ ci, speciality }) => {
             value={getDates()}
             min={getDates()}
             onChange={(e) =>
-              setdataCheckout({ ...dataCheckout, day: e.target.value })
+              setdataCheckout({ ...dataCheckout, day: e.target.value.trim() })
             }
           />
           <ButtonLink to={toCheckout} border={"white"} title="RESERVAR" />
