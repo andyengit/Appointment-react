@@ -1,18 +1,12 @@
 import axios from "axios"
 import api from "../../Helpers/api.json";
-import { useState, useEffect } from "react";
 import "./HistoryList.css";
 import Button from "../Button";
+import useDoctor from "../../Hooks/useDoctor";
 
 const HistoryList = ({data, update}) => {
 
-  const [doc, setdoc] = useState(null)
-
-  useEffect(() => {
-    axios.get(api.url + '/doctor/' + data.doctor_ci)
-      .then(res => setdoc(res.data[0]))
-      .catch()
-  }, [data])
+  const { Doctor } = useDoctor(data.doctor_ci)
 
   const cancelAppointment = () => {
     axios
@@ -22,7 +16,7 @@ const HistoryList = ({data, update}) => {
 
   return (
     <tr className="tr-table">
-      <td> Dr. {!!doc && doc.firstname} {!!doc && doc.lastname}</td>
+      <td> Dr. {!!Doctor && Doctor.firstname} {!!Doctor && Doctor.lastname}</td>
       <td>{data.day}</td>
       <td>Especialidad
         <Button

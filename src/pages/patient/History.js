@@ -1,32 +1,16 @@
 import HistoryList from "../../Components/History/HistoryList";
-import api from "../../Helpers/api.json";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import useAuth from "../../Auth/useAuth";
 import UpdateList from "../../Components/History/UpdateList";
+import usePatientAppointment from "../../Hooks/usePatientAppointment";
 
 const History = () => {
 
   const { user } = useAuth();
-  const [histories, sethistories] = useState(null);
-
-  useEffect(() => {
-    axios.get(api.url + "/appointment/patient/" + user.ci)
-      .then((res) => {
-        sethistories(res.data.filter(el => el.status === "done"  || el.status === "active"))
-      })
-  }, [user])
-
-  const updateList = () => {
-    axios.get(api.url + "/appointment/patient/" + user.ci)
-    .then((res) => {
-      sethistories(res.data.filter(el => el.status === "done"  || el.status === "active"))
-    })
-  }
+  const { List, updateList ,setList } = usePatientAppointment(user) 
 
   return (<div className="content">
     <div className="container">
-      <UpdateList setList={sethistories} List={histories} role={user.role}/>
+      <UpdateList setList={setList} List={List} role={user.role}/>
       <table className="styled-table">
         <thead>
           <tr>
@@ -36,10 +20,10 @@ const History = () => {
           </tr>
         </thead>
         <tbody>
-          {!!histories && histories.map((h, i) => <HistoryList key={i} data={h} update={updateList}/>) }
+          {!!List && List.map((h, i) => <HistoryList key={i} data={h} update={updateList}/>) }
         </tbody>
       </table>
-      {(!!histories && histories.length === 0) && <h3>No hay citas pasadas</h3>}
+      {(!!List && List.length === 0) && <h3>No hay citas pasadas</h3>}
     </div>
   </div>)
 }
