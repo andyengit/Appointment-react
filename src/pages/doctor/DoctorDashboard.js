@@ -15,12 +15,12 @@ const DoctorDashboard = () => {
   useEffect(() => {
     axios.get(api.url + "/doctor/"+ user.ci)
     .then(res => setimg(res.data[0].image))
-  },[])
+  },[user])
 
   return (
     <div className="content">
       <div className="container">
-        {!!img && <img className="dash-photo" src={img}></img>}
+        {!!img && <img alt="Perfil" className="dash-photo" src={img}></img>}
         <h2>
           Bienvenido Dr/a {user.firstname} {user.lastname}
         </h2>
